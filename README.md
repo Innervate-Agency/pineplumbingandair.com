@@ -1,112 +1,36 @@
-# pineplumbingandair.com
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-### **A modern web presence for a family business built on trust, craftsmanship, and community.**
+## Getting Started
 
----
-
-## Project Overview
-
-Pine Plumbing & Air represents everything right about local business: generational expertise, genuine community investment, and the kind of reliability that builds neighborhoods. This website reflects those values through thoughtful design, intuitive functionality, and content that speaks to real people facing real problems.
-
-## Technical Foundation
-
-**Frontend Architecture**
-- Next.js 14 with App Router for optimal performance and developer experience
-- TypeScript for type safety and scalable codebase maintenance  
-- Tailwind CSS with Headless UI for consistent, accessible design systems
-- Framer Motion for purposeful animations that enhance user experience
-
-**Content Management**
-- Sanity.io for flexible, client-friendly content updates
-- Custom schema designed for service-based businesses
-- Media optimization and delivery pipeline
-
-**Infrastructure & Deployment**
-- Vercel platform for global edge deployment
-- Automated CI/CD pipeline with preview deployments
-- Performance monitoring and Core Web Vitals optimization
-
-## Core Features
-
-**User Experience**
-- Responsive design prioritizing mobile-first accessibility
-- Emergency service contact prominently featured across all pages
-- Service area mapping with clear coverage visualization
-- Before/after project galleries showcasing quality workmanship
-
-**Business Intelligence**
-- Local SEO optimization for service-area dominance
-- Conversion-focused contact forms with smart routing
-- Customer testimonial management system
-- Service pricing and availability updates
-
-**Performance Standards**
-- Sub-3-second page load times across all devices
-- Lighthouse scores consistently above 95
-- Optimized for Core Web Vitals and search ranking factors
-
-## Development Workflow
+First, run the development server:
 
 ```bash
-# Environment setup
-npm install
-
-# Local development server
 npm run dev
-
-# Production build verification  
-npm run build
-
-# Production deployment
-npm start
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Project Architecture
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```
-src/
-├── app/                 # Next.js application routes and layouts
-├── components/          # Reusable UI component library
-├── lib/                 # Shared utilities and configurations
-└── styles/              # Global styling and design tokens
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-sanity/                  # Content management system
-├── schemas/             # Content type definitions
-├── structure/           # Studio navigation and organization
-└── plugins/             # Custom functionality extensions
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-public/                  # Static assets and media files
-docs/                    # Technical documentation and guides
-```
+## Learn More
 
-## Design Philosophy
+To learn more about Next.js, take a look at the following resources:
 
-This project embodies the intersection of modern web technology and timeless business values. Every design decision reflects the client's commitment to quality service and community connection.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-The visual language communicates reliability without sterility, professionalism without pretension. Color choices, typography, and interaction patterns all serve the primary goal: connecting homeowners with trustworthy service when they need it most.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Performance Benchmarks
+## Deploy on Vercel
 
-- **First Contentful Paint:** < 1.2 seconds
-- **Largest Contentful Paint:** < 2.5 seconds  
-- **Time to Interactive:** < 3.0 seconds
-- **Cumulative Layout Shift:** < 0.1
-- **First Input Delay:** < 100 milliseconds
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Deployment & Hosting
-
-**Production Environment**
-- Primary domain: [pineplumbingandair.com](https://pineplumbingandair.com)
-- CDN: Global edge network with 99.99% uptime SLA
-- SSL/TLS: Automated certificate management and renewal
-
-**Development Environment**  
-- Staging deployments for client review and testing
-- Branch-based preview URLs for feature development
-- Automated testing and code quality verification
-
----
-
-**Built by Innervate Agency** — where digital craftsmanship meets business intelligence.
-
-*Professional web development for businesses that matter.*
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
