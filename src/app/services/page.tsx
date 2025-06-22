@@ -90,7 +90,7 @@ export default function ServicesPage() {
     { icon: Clock, title: '24/7 Emergency Service', description: 'No extra charges for nights, weekends, or holidays' },
     { icon: Shield, title: 'Licensed & Insured', description: 'Fully bonded with comprehensive liability coverage' },
     { icon: Award, title: 'Satisfaction Guaranteed', description: '100% satisfaction or we make it right, no questions asked' },
-    { icon: Users, title: 'Family Owned & Operated', description: 'Three generations of trusted service in our community' }
+    { icon: Users, title: `${SITE_CONFIG.yearsExperience}`, description: 'Committed to serving the Boise Metro community with expertise' }
   ]
 
   const currentCategory = serviceCategories[activeCategory]
@@ -337,7 +337,7 @@ export default function ServicesPage() {
                 Why Choose Pine Plumbing & Air?
               </h2>
               <p className="text-xl text-gray-600">
-                Three generations of expertise, modern technology, and old-fashioned values.
+                {SITE_CONFIG.yearsExperience} serving Boise Metro with modern technology and old-fashioned values.
               </p>
             </motion.div>
 
@@ -367,44 +367,6 @@ export default function ServicesPage() {
                 )
               })}
             </div>
-          </div>
-        </section>
-
-        {/* Emergency CTA */}
-        <section className="py-16 bg-gradient-to-r from-emergency-600 to-secondary-600 text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl font-bold mb-4">
-                Need Service Right Now?
-              </h2>
-              <p className="text-xl mb-8 text-white/90">
-                Emergency repairs available 24/7. No extra charges for nights, weekends, or holidays.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.a
-                  href={`tel:${SITE_CONFIG.phone}`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center bg-white text-emergency-600 px-8 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  <Phone className="w-6 h-6 mr-3" />
-                  Call Now: {SITE_CONFIG.phone}
-                </motion.a>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all duration-300"
-                >
-                  <Calendar className="w-6 h-6 mr-3" />
-                  Schedule Service
-                </motion.button>
-              </div>
-            </motion.div>
           </div>
         </section>
       </div>

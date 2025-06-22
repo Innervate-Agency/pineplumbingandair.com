@@ -1,19 +1,22 @@
 export const SITE_CONFIG = {
   name: "Pine Plumbing & Air",
-  description: "Family-owned HVAC and plumbing services serving our community with trust, expertise, and genuine care.",
+  description: "Expert HVAC and plumbing services serving the Boise Metro with 20 years of experience, genuine care, and unwavering commitment to our community.",
   url: "https://pineplumbingandair.com",
-  phone: "(555) 123-4567",
-  email: "info@pineplumbingandair.com",
+  phone: "208-944-PINE",
+  phoneDisplay: "(208) 944-PINE",
+  email: "contact@pineplumbingandair.com",
   address: {
-    street: "123 Main Street",
-    city: "Your City", 
-    state: "State",
-    zip: "12345"
+    street: "Serving Boise Metro Area",
+    city: "Boise", 
+    state: "Idaho",
+    zip: "83702"
   },
   hours: {
     emergency: "24/7 Emergency Service",
     regular: "Monday - Friday: 8AM - 6PM"
-  }
+  },
+  yearsFounded: "2025",
+  yearsExperience: "20+ Years Experience"
 }
 
 export const SERVICE_DETAILS = {
