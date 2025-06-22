@@ -22,25 +22,25 @@ export default function AboutPage() {
       icon: Heart,
       title: "Family First",
       description: "Every customer becomes part of our extended family. We treat your home like our own.",
-      color: "from-red-500 to-pink-500"
+      color: "from-secondary-500 to-secondary-600"
     },
     {
       icon: Shield,
       title: "Trust & Integrity",
       description: "Transparent pricing, honest assessments, and work that stands the test of time.",
-      color: "from-blue-500 to-indigo-500"
+      color: "from-primary-500 to-primary-600"
     },
     {
       icon: Award,
       title: "Excellence",
       description: "Three generations of craftmanship refined into every service call and installation.",
-      color: "from-yellow-500 to-orange-500"
+      color: "from-accent-500 to-accent-600"
     },
     {
       icon: Users,
       title: "Community",
       description: "Supporting local families, businesses, and charities that make our neighborhood strong.",
-      color: "from-green-500 to-teal-500"
+      color: "from-sage-500 to-sage-600"
     }
   ]
 
@@ -79,7 +79,7 @@ export default function AboutPage() {
   return (
     <div ref={containerRef} className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-32 bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 text-white overflow-hidden">
         <motion.div 
           style={{ y: heroY }}
           className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"
@@ -99,7 +99,7 @@ export default function AboutPage() {
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Meet the
-              <span className="block bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
                 Pine Family
               </span>
             </h1>
@@ -145,7 +145,7 @@ export default function AboutPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Calendar className="w-5 h-5 mr-2 inline" />
                   Schedule Service
@@ -169,10 +169,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 shadow-2xl">
+              <div className="bg-gradient-to-br from-primary-50 to-sage-50 rounded-3xl p-8 shadow-2xl">
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <div className="text-center">
-                    <div className="w-24 h-24 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <div className="w-24 h-24 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                       <Heart className="w-12 h-12 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -194,7 +194,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-24 bg-gradient-to-br from-gray-50 to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -213,7 +213,7 @@ export default function AboutPage() {
 
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary-600 to-primary-700 rounded-full"></div>
 
             <div className="space-y-16">
               {timeline.map((item, index) => (
@@ -227,14 +227,14 @@ export default function AboutPage() {
                 >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                     <div className="bg-white p-6 rounded-2xl shadow-lg">
-                      <div className="text-2xl font-bold text-blue-600 mb-2">{item.year}</div>
+                      <div className="text-2xl font-bold text-primary-600 mb-2">{item.year}</div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-3">{item.title}</h3>
                       <p className="text-gray-600">{item.description}</p>
                     </div>
                   </div>
 
                   <div className="relative z-10">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center">
                       <div className="w-6 h-6 bg-white rounded-full"></div>
                     </div>
                   </div>
@@ -295,7 +295,7 @@ export default function AboutPage() {
       </section>
 
       {/* Certifications & Awards */}
-      <section className="py-24 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
+      <section className="py-24 bg-gradient-to-br from-primary-900 to-earth-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -323,7 +323,7 @@ export default function AboutPage() {
                 whileHover={{ scale: 1.05 }}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl text-center"
               >
-                <Award className="w-8 h-8 text-yellow-400 mx-auto mb-4" />
+                <Award className="w-8 h-8 text-accent-400 mx-auto mb-4" />
                 <h3 className="font-semibold text-lg">{cert}</h3>
               </motion.div>
             ))}
@@ -337,7 +337,7 @@ export default function AboutPage() {
             className="text-center mt-16"
           >
             <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-8 rounded-2xl max-w-2xl mx-auto">
-              <Star className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
+              <Star className="w-12 h-12 text-accent-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold mb-4">
                 Award-Winning Service
               </h3>
@@ -351,7 +351,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-600 to-red-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-emergency-600 to-secondary-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -370,7 +370,7 @@ export default function AboutPage() {
                 href={`tel:${SITE_CONFIG.phone}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center bg-white text-red-600 px-8 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center bg-white text-secondary-600 px-8 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Phone className="w-6 h-6 mr-3" />
                 Call {SITE_CONFIG.phone}

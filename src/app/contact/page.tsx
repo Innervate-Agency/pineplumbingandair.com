@@ -79,7 +79,7 @@ export default function ContactPage() {
       description: '24/7 Emergency Repairs',
       contact: SITE_CONFIG.phone,
       action: `tel:${SITE_CONFIG.phone}`,
-      bgColor: 'from-red-500 to-orange-500',
+      bgColor: 'from-emergency-500 to-emergency-600',
       urgent: true
     },
     {
@@ -88,7 +88,7 @@ export default function ContactPage() {
       description: 'Non-Emergency Appointments',
       contact: SITE_CONFIG.phone,
       action: `tel:${SITE_CONFIG.phone}`,
-      bgColor: 'from-blue-500 to-purple-500',
+      bgColor: 'from-primary-500 to-primary-600',
       urgent: false
     },
     {
@@ -97,7 +97,7 @@ export default function ContactPage() {
       description: 'Questions & Quotes',
       contact: SITE_CONFIG.email,
       action: `mailto:${SITE_CONFIG.email}`,
-      bgColor: 'from-green-500 to-teal-500',
+      bgColor: 'from-sage-500 to-sage-600',
       urgent: false
     },
     {
@@ -106,7 +106,7 @@ export default function ContactPage() {
       description: 'We Come to You',
       contact: 'Greater Metro Area',
       action: '#service-area',
-      bgColor: 'from-purple-500 to-pink-500',
+      bgColor: 'from-secondary-500 to-secondary-600',
       urgent: false
     }
   ]
@@ -121,7 +121,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,7 +138,7 @@ export default function ContactPage() {
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Get in
-              <span className="block bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
                 Touch
               </span>
             </h1>
@@ -236,7 +236,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                         placeholder="Your name"
                       />
                     </div>
@@ -250,7 +250,7 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                         placeholder="(555) 123-4567"
                       />
                     </div>
@@ -265,7 +265,7 @@ export default function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -279,7 +279,7 @@ export default function ContactPage() {
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                       >
                         <option value="">Select a service</option>
                         {serviceOptions.map(service => (
@@ -295,7 +295,7 @@ export default function ContactPage() {
                         name="urgency"
                         value={formData.urgency}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                       >
                         {urgencyOptions.map(option => (
                           <option key={option.value} value={option.value}>
@@ -318,7 +318,7 @@ export default function ContactPage() {
                           value="phone"
                           checked={formData.preferredContact === 'phone'}
                           onChange={handleChange}
-                          className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                          className="w-4 h-4 text-primary-600 border-gray-300 focus:ring-primary-500"
                         />
                         <span className="ml-2 text-gray-700">Phone</span>
                       </label>
@@ -329,7 +329,7 @@ export default function ContactPage() {
                           value="email"
                           checked={formData.preferredContact === 'email'}
                           onChange={handleChange}
-                          className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                          className="w-4 h-4 text-primary-600 border-gray-300 focus:ring-primary-500"
                         />
                         <span className="ml-2 text-gray-700">Email</span>
                       </label>
@@ -345,7 +345,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
                       placeholder="Describe your issue or what you need help with..."
                     />
                   </div>
@@ -355,7 +355,7 @@ export default function ContactPage() {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                    className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <motion.div
@@ -385,7 +385,7 @@ export default function ContactPage() {
               {/* Business Hours */}
               <div className="bg-white rounded-3xl p-8 shadow-xl">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <Clock className="w-6 h-6 mr-3 text-blue-600" />
+                  <Clock className="w-6 h-6 mr-3 text-primary-600" />
                   Business Hours
                 </h3>
                 <div className="space-y-4">
@@ -410,11 +410,11 @@ export default function ContactPage() {
               {/* Service Area Map */}
               <div className="bg-white rounded-3xl p-8 shadow-xl">
                 <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                  <MapPin className="w-6 h-6 mr-3 text-blue-600" />
+                  <MapPin className="w-6 h-6 mr-3 text-primary-600" />
                   Service Area
                 </h3>
-                <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 text-center">
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl p-6 text-center">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="w-10 h-10 text-white" />
                   </div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">
@@ -430,7 +430,7 @@ export default function ContactPage() {
               </div>
 
               {/* Quick Stats */}
-              <div className="bg-gradient-to-br from-blue-900 to-purple-900 rounded-3xl p-8 shadow-xl text-white">
+              <div className="bg-gradient-to-br from-primary-900 to-earth-900 rounded-3xl p-8 shadow-xl text-white">
                 <h3 className="text-2xl font-bold mb-6">
                   Why Choose Pine?
                 </h3>

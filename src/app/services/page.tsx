@@ -30,30 +30,30 @@ export default function ServicesPage() {
     plumbing: {
       ...SERVICES.plumbing,
       icon: Droplets,
-      color: 'from-blue-600 to-blue-800',
-      bgColor: 'bg-blue-50',
-      iconColor: 'text-blue-600'
+      color: 'from-primary-600 to-primary-700',
+      bgColor: 'bg-primary-50',
+      iconColor: 'text-primary-600'
     },
     heating: {
       ...SERVICES.heating,
       icon: Flame,
-      color: 'from-orange-500 to-red-600',
-      bgColor: 'bg-orange-50',
-      iconColor: 'text-orange-600'
+      color: 'from-secondary-500 to-secondary-600',
+      bgColor: 'bg-secondary-50',
+      iconColor: 'text-secondary-600'
     },
     cooling: {
       ...SERVICES.cooling,
       icon: Snowflake,
-      color: 'from-cyan-500 to-blue-600',
-      bgColor: 'bg-cyan-50',
-      iconColor: 'text-cyan-600'
+      color: 'from-primary-500 to-primary-600',
+      bgColor: 'bg-primary-50',
+      iconColor: 'text-primary-600'
     },
     airQuality: {
       ...SERVICES.airQuality,
       icon: Wind,
-      color: 'from-green-500 to-teal-600',
-      bgColor: 'bg-green-50',
-      iconColor: 'text-green-600'
+      color: 'from-sage-500 to-sage-600',
+      bgColor: 'bg-sage-50',
+      iconColor: 'text-sage-600'
     }
   }
 
@@ -75,7 +75,7 @@ export default function ServicesPage() {
   return (
     <div ref={containerRef} className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,7 +87,7 @@ export default function ServicesPage() {
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Complete Home
-              <span className="block bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
                 Comfort Solutions
               </span>
             </h1>
@@ -99,7 +99,7 @@ export default function ServicesPage() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-orange-500/25 transition-all duration-300"
+                className="bg-gradient-to-r from-emergency-500 to-emergency-600 px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:shadow-emergency-500/25 transition-all duration-300"
               >
                 <Phone className="w-5 h-5 mr-2 inline" />
                 Call for Emergency Service
@@ -192,7 +192,7 @@ export default function ServicesPage() {
                         animate={{ opacity: hoveredService === service ? 1 : 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <span className="text-sm font-medium text-blue-600 cursor-pointer hover:text-blue-800">
+                        <span className="text-sm font-medium text-primary-600 cursor-pointer hover:text-primary-800">
                           Learn more →
                         </span>
                       </motion.div>
@@ -206,7 +206,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -234,13 +234,13 @@ export default function ServicesPage() {
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Thermometer className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   {PRICING.diagnostic.title}
                 </h3>
-                <div className="text-4xl font-bold text-blue-600 mb-4">
+                <div className="text-4xl font-bold text-primary-600 mb-4">
                   ${PRICING.diagnostic.price}
                 </div>
                 <p className="text-gray-600 mb-6">
@@ -249,7 +249,7 @@ export default function ServicesPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold w-full"
+                  className="bg-gradient-to-r from-primary-500 to-secondary-600 text-white px-6 py-3 rounded-xl font-semibold w-full"
                 >
                   Schedule Diagnostic
                 </motion.button>
@@ -263,7 +263,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className="bg-gradient-to-br from-purple-600 to-blue-600 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-white relative overflow-hidden"
+              className="bg-gradient-to-br from-secondary-600 to-primary-600 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-white relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
               <div className="relative z-10 text-center">
@@ -283,7 +283,7 @@ export default function ServicesPage() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-purple-600 px-6 py-3 rounded-xl font-semibold w-full hover:bg-gray-50 transition-colors"
+                  className="bg-white text-secondary-600 px-6 py-3 rounded-xl font-semibold w-full hover:bg-gray-50 transition-colors"
                 >
                   Join Comfort Club
                 </motion.button>
@@ -324,7 +324,7 @@ export default function ServicesPage() {
                   whileHover={{ y: -10 }}
                   className="text-center group"
                 >
-                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                     <IconComponent className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -341,7 +341,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Emergency CTA */}
-      <section className="py-16 bg-gradient-to-r from-red-600 to-orange-600 text-white">
+      <section className="py-16 bg-gradient-to-r from-emergency-600 to-secondary-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -360,7 +360,7 @@ export default function ServicesPage() {
                 href={`tel:${SITE_CONFIG.phone}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center bg-white text-red-600 px-8 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center bg-white text-emergency-600 px-8 py-4 rounded-2xl font-bold text-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Phone className="w-6 h-6 mr-3" />
                 Call Now: {SITE_CONFIG.phone}

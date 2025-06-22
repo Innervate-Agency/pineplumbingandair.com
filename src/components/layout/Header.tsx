@@ -35,29 +35,29 @@ export default function Header() {
     {
       ...SERVICES.heating,
       icon: Flame,
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-50',
+      color: 'text-secondary-600',
+      bgColor: 'bg-secondary-50',
       href: '/services#heating'
     },
     {
       ...SERVICES.cooling,
       icon: Snowflake,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
+      color: 'text-primary-600',
+      bgColor: 'bg-primary-50',
       href: '/services#cooling'
     },
     {
       ...SERVICES.plumbing,
       icon: Droplets,
-      color: 'text-blue-800',
-      bgColor: 'bg-blue-50',
+      color: 'text-primary-700',
+      bgColor: 'bg-primary-50',
       href: '/services#plumbing'
     },
     {
       ...SERVICES.airQuality,
       icon: Wind,
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
+      color: 'text-sage-600',
+      bgColor: 'bg-sage-50',
       href: '/services#air-quality'
     }
   ]
@@ -174,7 +174,7 @@ export default function Header() {
                 onClick={() => setIsLoginOpen(!isLoginOpen)}
                 className="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
               >
-                <Star className="h-4 w-4 text-yellow-500" />
+                <Star className="h-4 w-4 text-accent-500" />
                 <span>Club Login</span>
                 <ChevronDown className={`h-4 w-4 transition-transform ${isLoginOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -182,7 +182,7 @@ export default function Header() {
               {isLoginOpen && (
                 <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 p-6 z-50">
                   <div className="text-center mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Star className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">Pine Comfort Club</h3>
@@ -208,7 +208,7 @@ export default function Header() {
                     </div>
                     <button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:from-purple-700 hover:to-blue-700 transition-all duration-300 flex items-center justify-center"
+                      className="w-full bg-gradient-to-r from-secondary-600 to-primary-600 text-white py-2 px-4 rounded-lg font-medium hover:from-secondary-700 hover:to-primary-700 transition-all duration-300 flex items-center justify-center"
                     >
                       <LogIn className="w-4 h-4 mr-2" />
                       Sign In
@@ -294,7 +294,7 @@ export default function Header() {
               <div className="space-y-3 px-3 pt-4 border-t border-gray-100">
                 <Link
                   href="/services#membership"
-                  className="flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-4 rounded-lg font-medium"
+                  className="flex items-center justify-center w-full bg-gradient-to-r from-secondary-600 to-primary-600 text-white py-3 px-4 rounded-lg font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Star className="w-4 h-4 mr-2" />

@@ -37,7 +37,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 text-white">
       {/* Emergency CTA Banner */}
-      <div className="bg-gradient-to-r from-red-600 to-orange-600 py-8">
+      <div className="bg-gradient-to-r from-emergency-600 to-secondary-600 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-center md:text-left mb-4 md:mb-0">
@@ -49,7 +49,7 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href={`tel:${SITE_CONFIG.phone}`}
-                className="bg-white text-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-colors flex items-center justify-center shadow-lg"
+                className="bg-white text-secondary-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-colors flex items-center justify-center shadow-lg"
               >
                 <Phone className="w-5 h-5 mr-3" />
                 Call Now: {SITE_CONFIG.phone}
@@ -84,36 +84,36 @@ export default function Footer() {
               {/* Contact Info */}
               <div className="space-y-3 mb-6">
                 <div className="flex items-center">
-                  <Phone className="w-5 h-5 text-orange-500 mr-3" />
+                  <Phone className="w-5 h-5 text-secondary-500 mr-3" />
                   <a href={`tel:${SITE_CONFIG.phone}`} className="text-gray-300 hover:text-white transition-colors">
                     {SITE_CONFIG.phone}
                   </a>
                 </div>
                 <div className="flex items-center">
-                  <Mail className="w-5 h-5 text-orange-500 mr-3" />
+                  <Mail className="w-5 h-5 text-secondary-500 mr-3" />
                   <a href={`mailto:${SITE_CONFIG.email}`} className="text-gray-300 hover:text-white transition-colors">
                     {SITE_CONFIG.email}
                   </a>
                 </div>
                 <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-orange-500 mr-3 mt-1" />
+                  <MapPin className="w-5 h-5 text-secondary-500 mr-3 mt-1" />
                   <div className="text-gray-300">
                     <div>{SITE_CONFIG.address.street}</div>
                     <div>{SITE_CONFIG.address.city}, {SITE_CONFIG.address.state} {SITE_CONFIG.address.zip}</div>
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="w-5 h-5 text-orange-500 mr-3" />
+                  <Clock className="w-5 h-5 text-secondary-500 mr-3" />
                   <div className="text-gray-300">
                     <div>{SITE_CONFIG.hours.regular}</div>
-                    <div className="text-sm text-orange-400">{SITE_CONFIG.hours.emergency}</div>
+                    <div className="text-sm text-secondary-400">{SITE_CONFIG.hours.emergency}</div>
                   </div>
                 </div>
               </div>
 
               {/* Social Links */}
               <div className="flex space-x-4">
-                <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors">
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a href="#" className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-600 transition-colors">
@@ -133,9 +133,9 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link 
                       href={link.href} 
-                      className="text-gray-300 hover:text-orange-400 transition-colors flex items-center"
+                      className="text-gray-300 hover:text-secondary-400 transition-colors flex items-center"
                     >
-                      <span className="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-secondary-500 rounded-full mr-3"></span>
                       {link.name}
                     </Link>
                   </li>
@@ -153,9 +153,9 @@ export default function Footer() {
                     <li key={service.name}>
                       <Link 
                         href={service.href} 
-                        className="text-gray-300 hover:text-orange-400 transition-colors flex items-center group"
+                        className="text-gray-300 hover:text-secondary-400 transition-colors flex items-center group"
                       >
-                        <IconComponent className="w-4 h-4 text-orange-500 mr-3 group-hover:scale-110 transition-transform" />
+                        <IconComponent className="w-4 h-4 text-secondary-500 mr-3 group-hover:scale-110 transition-transform" />
                         {service.name}
                       </Link>
                     </li>
@@ -164,9 +164,9 @@ export default function Footer() {
               </ul>
 
               {/* Pine Comfort Club CTA */}
-              <div className="mt-8 p-4 bg-gradient-to-br from-purple-900/50 to-blue-900/50 rounded-xl border border-purple-500/20">
+              <div className="mt-8 p-4 bg-gradient-to-br from-primary-900/50 to-earth-900/50 rounded-xl border border-primary-500/20">
                 <div className="flex items-center mb-2">
-                  <Star className="w-5 h-5 text-yellow-500 mr-2" />
+                  <Star className="w-5 h-5 text-accent-500 mr-2" />
                   <h5 className="font-semibold text-white">Pine Comfort Club</h5>
                 </div>
                 <p className="text-sm text-gray-300 mb-3">
@@ -174,7 +174,7 @@ export default function Footer() {
                 </p>
                 <Link 
                   href="/services#membership"
-                  className="text-sm font-medium text-purple-400 hover:text-purple-300 transition-colors"
+                  className="text-sm font-medium text-primary-400 hover:text-primary-300 transition-colors"
                 >
                   Learn More →
                 </Link>
@@ -189,8 +189,8 @@ export default function Footer() {
                   const IconComponent = factor.icon
                   return (
                     <div key={index} className="flex items-center">
-                      <div className="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center mr-3">
-                        <IconComponent className="w-4 h-4 text-orange-500" />
+                      <div className="w-8 h-8 bg-secondary-500/20 rounded-lg flex items-center justify-center mr-3">
+                        <IconComponent className="w-4 h-4 text-secondary-500" />
                       </div>
                       <span className="text-gray-300 text-sm">{factor.text}</span>
                     </div>
@@ -219,7 +219,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center mb-4 md:mb-0">
-              <Heart className="w-4 h-4 text-red-500 mr-2" />
+              <Heart className="w-4 h-4 text-secondary-500 mr-2" />
               <p className="text-gray-400 text-sm">
                 © {currentYear} Pine Plumbing & Air. Made with care for our community.
               </p>
@@ -228,7 +228,7 @@ export default function Footer() {
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
               <div className="flex items-center">
-                <Star className="w-4 h-4 text-yellow-500 mr-1" />
+                <Star className="w-4 h-4 text-accent-500 mr-1" />
                 <span>Family Owned Since 1985</span>
               </div>
             </div>

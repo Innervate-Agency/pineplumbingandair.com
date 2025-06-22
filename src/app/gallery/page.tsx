@@ -138,7 +138,7 @@ export default function GalleryPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,7 +155,7 @@ export default function GalleryPage() {
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Project
-              <span className="block bg-gradient-to-r from-blue-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
                 Gallery
               </span>
             </h1>
@@ -180,7 +180,7 @@ export default function GalleryPage() {
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -247,7 +247,7 @@ export default function GalleryPage() {
                   {/* Project Details */}
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                      <span className="text-sm font-medium text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
                         {categories.find(cat => cat.id === project.category)?.name}
                       </span>
                       <div className="flex items-center">
@@ -257,7 +257,7 @@ export default function GalleryPage() {
                       </div>
                     </div>
                     
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
                       {project.title}
                     </h3>
                     
@@ -284,7 +284,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Customer Testimonials Carousel */}
-      <section className="py-20 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
+      <section className="py-20 bg-gradient-to-br from-primary-900 to-earth-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -403,7 +403,7 @@ export default function GalleryPage() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
                   {process.step}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">

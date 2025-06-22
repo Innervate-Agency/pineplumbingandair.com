@@ -50,13 +50,13 @@ export default function ServiceModal({ serviceKey, isOpen, onClose }: ServiceMod
   const getCategoryColor = (category: string) => {
     switch (category) {
       case 'plumbing':
-        return 'from-blue-600 to-blue-800'
+        return 'from-primary-600 to-primary-800'
       case 'heating':
-        return 'from-orange-500 to-red-600'
+        return 'from-accent-500 to-primary-600'
       case 'cooling':
-        return 'from-cyan-500 to-blue-600'
+        return 'from-primary-500 to-primary-600'
       case 'airQuality':
-        return 'from-green-500 to-teal-600'
+        return 'from-primary-500 to-primary-600'
       default:
         return 'from-gray-500 to-gray-700'
     }
@@ -65,13 +65,13 @@ export default function ServiceModal({ serviceKey, isOpen, onClose }: ServiceMod
   const getCategoryBadgeColor = (category: string) => {
     switch (category) {
       case 'plumbing':
-        return 'bg-blue-100 text-blue-800'
+        return 'bg-primary-100 text-primary-800'
       case 'heating':
-        return 'bg-orange-100 text-orange-800'
+        return 'bg-accent-100 text-accent-800'
       case 'cooling':
-        return 'bg-cyan-100 text-cyan-800'
+        return 'bg-primary-100 text-primary-800'
       case 'airQuality':
-        return 'bg-green-100 text-green-800'
+        return 'bg-primary-100 text-primary-800'
       default:
         return 'bg-gray-100 text-gray-800'
     }
@@ -131,14 +131,14 @@ export default function ServiceModal({ serviceKey, isOpen, onClose }: ServiceMod
                 {/* Benefits */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                    <CheckCircle className="w-5 h-5 text-green-600 mr-2" />
+                    <CheckCircle className="w-5 h-5 text-primary-600 mr-2" />
                     Service Benefits
                   </h3>
                   <ul className="space-y-3">
                     {service.benefits.map((benefit, index) => (
                       <li key={index} className="flex items-start">
-                        <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                          <CheckCircle className="w-4 h-4 text-green-600" />
+                        <div className="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                          <CheckCircle className="w-4 h-4 text-primary-600" />
                         </div>
                         <span className="text-gray-700">{benefit}</span>
                       </li>
@@ -149,14 +149,14 @@ export default function ServiceModal({ serviceKey, isOpen, onClose }: ServiceMod
                 {/* Common Issues */}
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                    <AlertTriangle className="w-5 h-5 text-orange-600 mr-2" />
+                    <AlertTriangle className="w-5 h-5 text-accent-600 mr-2" />
                     Common Issues We Handle
                   </h3>
                   <ul className="space-y-3">
                     {service.commonIssues.map((issue, index) => (
                       <li key={index} className="flex items-start">
-                        <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
-                          <AlertTriangle className="w-4 h-4 text-orange-600" />
+                        <div className="w-6 h-6 bg-accent-100 rounded-full flex items-center justify-center mt-0.5 mr-3 flex-shrink-0">
+                          <AlertTriangle className="w-4 h-4 text-accent-600" />
                         </div>
                         <span className="text-gray-700">{issue}</span>
                       </li>
@@ -171,29 +171,29 @@ export default function ServiceModal({ serviceKey, isOpen, onClose }: ServiceMod
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Why Choose Pine Plumbing & Air?</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Shield className="w-6 h-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <Shield className="w-6 h-6 text-primary-600" />
                     </div>
                     <h4 className="font-semibold text-sm text-gray-900 mb-1">Licensed & Insured</h4>
                     <p className="text-xs text-gray-600">Fully bonded and covered</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Clock className="w-6 h-6 text-orange-600" />
+                    <div className="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <Clock className="w-6 h-6 text-accent-600" />
                     </div>
                     <h4 className="font-semibold text-sm text-gray-900 mb-1">24/7 Emergency</h4>
                     <p className="text-xs text-gray-600">Available when you need us</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Award className="w-6 h-6 text-green-600" />
+                    <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <Award className="w-6 h-6 text-primary-600" />
                     </div>
                     <h4 className="font-semibold text-sm text-gray-900 mb-1">Family Owned</h4>
                     <p className="text-xs text-gray-600">Three generations of service</p>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                      <Star className="w-6 h-6 text-purple-600" />
+                    <div className="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                      <Star className="w-6 h-6 text-secondary-600" />
                     </div>
                     <h4 className="font-semibold text-sm text-gray-900 mb-1">Satisfaction Guaranteed</h4>
                     <p className="text-xs text-gray-600">We make it right</p>
