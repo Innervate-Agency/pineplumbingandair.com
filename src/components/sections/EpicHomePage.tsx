@@ -8,6 +8,7 @@ import {
   ChevronRight, ArrowRight, Award, Heart
 } from 'lucide-react'
 import { SITE_CONFIG, PRICING } from '@/lib/constants'
+import ServicesSection from '@/components/sections/ServiceSection'
 
 export default function EpicHomePage() {
   const [hoveredService, setHoveredService] = useState<number | null>(null)
@@ -296,6 +297,9 @@ export default function EpicHomePage() {
               </motion.div>
           </div>
       </section>
+
+      {/* Services Section with Modal */}
+      <ServicesSection />
 
       {/* Trust Section */}
       <section className="py-20 bg-white">
