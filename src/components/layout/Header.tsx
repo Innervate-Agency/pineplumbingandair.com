@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { 
   Phone, Menu, X, ChevronDown, LogIn, 
   Flame, Snowflake, Droplets, Wind, Star,
@@ -70,27 +71,50 @@ export default function Header() {
   ]
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <header className="bg-white/85 backdrop-blur-xl border-b border-white/20 shadow-lg shadow-black/5 sticky top-0 z-50">
+      {/* Mica/Glass morphism background overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-50/30 via-white/40 to-secondary-50/30"></div>
+      
+      <nav className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold text-primary-600 hover:text-primary-700 transition-colors">
-              Pine Plumbing & Air
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="relative">
+                <Image
+                  src="/ppa-logo-pine-trees-moon-and-stars.svg"
+                  alt="Pine Plumbing & Air Logo"
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 transition-transform duration-300 group-hover:scale-110"
+                  priority
+                />
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-display font-bold tracking-tight bg-gradient-to-r from-primary-700 via-primary-600 to-secondary-600 bg-clip-text text-transparent uppercase leading-tight">
+                  PINE PLUMBING & AIR
+                </span>
+                <span className="text-xs text-primary-600/80 font-medium font-mono tracking-wide uppercase">
+                  FLOW EXPERTS • PRECISION COMFORT
+                </span>
+              </div>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
-            <div className="ml-10 flex items-center space-x-8">
+            <div className="ml-10 flex items-center space-x-6">
               {/* Regular Nav Items */}
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
+                  className="relative text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-display font-semibold tracking-wide transition-all duration-300 rounded-lg hover:bg-white/60 hover:shadow-sm group uppercase"
                 >
-                  {item.name}
+                  <span className="relative z-10">{item.name}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 </Link>
               ))}
 
@@ -98,14 +122,15 @@ export default function Header() {
               <div className="relative" ref={servicesRef}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors flex items-center space-x-1"
+                  className="relative text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-display font-semibold tracking-wide transition-all duration-300 rounded-lg hover:bg-white/60 hover:shadow-sm flex items-center space-x-1 group uppercase"
                 >
-                  <span>Services</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                  <span className="relative z-10">Services</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                 </button>
 
                 {isServicesOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-96 bg-white rounded-2xl shadow-xl border border-gray-100 p-6 z-50">
+                  <div className="absolute top-full left-0 mt-3 w-96 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-white/30 p-6 z-50">
                     <div className="grid grid-cols-1 gap-4">
                       {serviceCategories.map((category) => {
                         const IconComponent = category.icon
@@ -172,7 +197,7 @@ export default function Header() {
             <div className="relative" ref={loginRef}>
               <button
                 onClick={() => setIsLoginOpen(!isLoginOpen)}
-                className="flex items-center space-x-2 text-sm font-medium text-gray-600 hover:text-primary-600 transition-colors px-3 py-2 rounded-lg hover:bg-gray-50"
+                className="flex items-center space-x-2 text-sm font-semibold text-gray-700 hover:text-primary-600 transition-all duration-300 px-3 py-2 rounded-lg hover:bg-white/60 hover:shadow-sm"
               >
                 <Star className="h-4 w-4 text-accent-500" />
                 <span>Club Login</span>
@@ -180,7 +205,7 @@ export default function Header() {
               </button>
 
               {isLoginOpen && (
-                <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 p-6 z-50">
+                <div className="absolute top-full right-0 mt-3 w-80 bg-white/90 backdrop-blur-xl rounded-2xl shadow-xl border border-white/30 p-6 z-50">
                   <div className="text-center mb-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Star className="w-8 h-8 text-white" />
@@ -232,7 +257,7 @@ export default function Header() {
             {/* Emergency Call Button */}
             <a
               href={`tel:${SITE_CONFIG.phone}`}
-              className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:from-red-700 hover:to-orange-700 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-emergency-600 to-secondary-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:from-emergency-700 hover:to-secondary-700 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl hover:scale-105"
             >
               <Phone className="h-4 w-4" />
               <span className="hidden xl:inline">Emergency Service</span>
@@ -244,7 +269,7 @@ export default function Header() {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-600 hover:text-primary-600 p-2"
+              className="text-gray-700 hover:text-primary-600 p-2 rounded-lg hover:bg-white/60 transition-all duration-300"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -253,8 +278,8 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-gray-100">
-            <div className="px-2 pt-4 pb-6 space-y-3 bg-white">
+          <div className="lg:hidden border-t border-white/30">
+            <div className="px-2 pt-4 pb-6 space-y-3 bg-white/80 backdrop-blur-xl">
               {/* Regular Nav Items */}
               {navigation.map((item) => (
                 <Link

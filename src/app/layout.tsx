@@ -1,15 +1,25 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { DM_Sans, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { SITE_CONFIG } from '@/lib/constants'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const poppins = Poppins({ 
+const dmSans = DM_Sans({ 
   subsets: ['latin'], 
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins' 
+  variable: '--font-dm-sans',
+  display: 'swap'
+})
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ['latin'], 
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+  display: 'swap'
+})
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap'
 })
 
 export const metadata: Metadata = {
@@ -23,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <Header />
         <main>{children}</main>

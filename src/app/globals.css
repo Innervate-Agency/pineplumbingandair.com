@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Poppins", system-ui, sans-serif;
+  --font-sans: "DM Sans", "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
   --color-primary-50: #f0f7f4;
   --color-primary-100: #dcece3;
@@ -117,3 +118,5 @@
     transform: translateY(-10px);
   }
 }
+
+/* Restored normal navbar - no extra body padding needed */
