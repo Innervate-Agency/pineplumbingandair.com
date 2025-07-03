@@ -333,9 +333,10 @@ export default function Footer() {
               </div>
 
               {/* Copyright */}
-              <div className="flex items-center text-gray-400 text-sm">
+              <div className="flex flex-col items-center text-gray-400 text-sm">
                 <Heart className="w-4 h-4 text-secondary-500 mr-2" />
                 <span>© {currentYear} Pine Plumbing & Air. Made with care for Boise Metro.</span>
+                <span className="mt-2 text-xs text-accent-400">Proudly supporting Idaho Food Bank & Metro Meals on Wheels. Giving back to our community with every service.</span>
               </div>
 
               {/* Legal Links */}

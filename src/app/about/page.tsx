@@ -39,7 +39,7 @@ export default function AboutPage() {
     {
       icon: Users,
       title: "Community",
-      description: "Supporting local families, businesses, and charities that make our neighborhood strong.",
+      description: "Supporting local families, businesses, and charities that make our neighborhood strong. Giving back is part of our mission.",
       color: "from-sage-500 to-sage-600"
     }
   ]
@@ -238,6 +238,17 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Community Commitment Section */}
+      <section className="py-20 bg-gradient-to-br from-sage-50 to-primary-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold text-primary-900 mb-4">Giving Back to Our Community</h2>
+          <p className="text-xl text-gray-700 mb-6">We're proud to support the Idaho Food Bank and Metro Meals on Wheels—because taking care of our neighbors goes beyond pipes and vents.</p>
+          <p className="text-lg text-gray-700 mb-4">💧 When you choose Pine for your Plumbing or HVAC needs, a portion of every service goes directly to supporting local families in need. Your home comfort helps provide food, care, and dignity to others in our community.</p>
+          <p className="text-lg text-gray-700 mb-4">👉 Know someone going through a tough time? <b>Nominate a community member in need of Plumbing or HVAC services through our <a href='/contact' className='text-primary-600 underline'>contact form</a></b>. We're here to help where it matters most.</p>
+          <p className="text-lg text-gray-700">❤️ Thank you for being part of the Pine family. Together, we're building a stronger Idaho.</p>
         </div>
       </section>
 

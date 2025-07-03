@@ -213,6 +213,10 @@ export default function ContactPage() {
                   Tell us about your needs and we'll get back to you with a personalized solution.
                 </p>
 
+                <div className="mb-8 p-4 bg-primary-50 border-l-4 border-primary-400 rounded-xl text-primary-900 text-center text-lg font-medium">
+                  <span>Know someone in need? <b>Nominate a community member for free or discounted Plumbing or HVAC service</b>—just mention it in your message below. We're here to help where it matters most.</span>
+                </div>
+
                 {submitStatus === 'success' && (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}

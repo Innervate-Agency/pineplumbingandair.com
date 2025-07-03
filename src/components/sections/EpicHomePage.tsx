@@ -7,6 +7,7 @@ import {
 } from 'lucide-react'
 import { SITE_CONFIG, PRICING } from '@/lib/constants'
 import ServicesSection from '@/components/sections/ServiceSection'
+import { useState } from 'react'
 
 export default function EpicHomePage() {
 
@@ -22,6 +23,48 @@ export default function EpicHomePage() {
     { name: "Mike R.", text: "The Comfort Club is worth every penny. Priority service and 10% off everything!", rating: 5 },
     { name: "Jenny L.", text: "Professional, honest, and they actually care about our family's comfort.", rating: 5 }
   ]
+
+  // Contact form state for hero
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    service: 'Heating',
+    urgency: 'routine',
+    preferredContact: 'phone',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle')
+
+  const serviceOptions = [
+    'Heating', 'Cooling', 'Plumbing', 'Emergency', 'New Installation', 'Maintenance', 'Comfort Club', 'Other'
+  ]
+  const urgencyOptions = [
+    { value: 'emergency', label: 'Emergency (ASAP)' },
+    { value: 'urgent', label: 'Urgent (Same Day)' },
+    { value: 'soon', label: 'This Week' },
+    { value: 'routine', label: 'Routine (Next Week+)' }
+  ]
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+  const handleServiceButton = (service: string) => {
+    setFormData(prev => ({ ...prev, service }))
+  }
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setSubmitStatus('success')
+      setTimeout(() => setSubmitStatus('idle'), 3000)
+      setFormData({
+        name: '', phone: '', email: '', service: 'Heating', urgency: 'routine', preferredContact: 'phone', message: ''
+      })
+    }, 1800)
+  }
 
   const handleLearnMore = (serviceName: string) => {
     // Navigate to services page with appropriate section
@@ -73,19 +116,19 @@ export default function EpicHomePage() {
               transition={{ duration: 0.8 }}
               className="text-white"
             >
-              <div className="inline-flex items-center px-4 py-2 bg-emergency-600 rounded-full text-white text-sm font-semibold mb-6">
-                ⚡ 24/7 Emergency Service Available
-              </div>
-
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              {/* HERO HEADLINE - moved above badge, styled */}
+              <h1 className="text-6xl md:text-7xl font-display font-extrabold mb-4 leading-tight uppercase tracking-tight">
                 Expert HVAC &<br />
-                <span className="text-primary-400">Plumbing Services</span><br />
+                <span className="bg-gradient-to-r from-primary-400 via-accent-400 to-secondary-500 bg-clip-text text-transparent animate-gradient-x">Plumbing Services</span><br />
                 You Can Trust
               </h1>
-
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                With 10+ Years of Experience in the industry, we're licensed, insured, and committed to serving the Boise Metro community with honest pricing, 
-                quality workmanship, and guaranteed satisfaction.
+              {/* 24/7 Emergency Badge - now below headline */}
+              <div className="inline-flex items-center px-4 py-2 border-2 border-emergency-600 bg-transparent rounded-full text-emergency-600 text-sm font-semibold mb-6 gap-2 shadow-sm">
+                <span className="text-lg">⚡</span> 24/7 Emergency Service Available
+              </div>
+              {/* Tagline - improved, concise, non-generic */}
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed font-display">
+                Fast, Reliable, and Honest Service for Your Home Comfort—Day or Night, Rain or Shine.
               </p>
 
               {/* Trust Indicators */}
@@ -110,16 +153,16 @@ export default function EpicHomePage() {
                   href={`tel:${SITE_CONFIG.phone}`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-emergency-600 hover:bg-emergency-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center shadow-lg"
+                  className="bg-emergency-600 hover:bg-emergency-700 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center shadow-lg whitespace-nowrap"
                 >
-                  <Phone className="w-5 h-5 mr-3" />
+                  <Phone className="w-5 h-5 mr-2" />
                   Call Now: {SITE_CONFIG.phoneDisplay}
                 </motion.a>
 
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center"
+                  className="bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center whitespace-nowrap"
                 >
                   Get Free Estimate
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -137,49 +180,132 @@ export default function EpicHomePage() {
               <h3 className="text-white text-2xl font-bold mb-6 text-center">
                 Schedule Your Service
               </h3>
-              
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-3">
-                  <button className="bg-white/20 hover:bg-white/30 text-white py-3 px-4 rounded-lg font-medium transition-colors">
-                    🔥 Heating
-                  </button>
-                  <button className="bg-white/20 hover:bg-white/30 text-white py-3 px-4 rounded-lg font-medium transition-colors">
-                    ❄️ Cooling
-                  </button>
-                  <button className="bg-white/20 hover:bg-white/30 text-white py-3 px-4 rounded-lg font-medium transition-colors">
-                    🚿 Plumbing
-                  </button>
-                  <button className="bg-white/20 hover:bg-white/30 text-white py-3 px-4 rounded-lg font-medium transition-colors">
-                    ⚡ Emergency
-                  </button>
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                {/* Service Quick Buttons */}
+                <div className="grid grid-cols-2 gap-3 mb-2">
+                  {['Heating', 'Cooling', 'Plumbing', 'Emergency'].map((svc) => (
+                    <button
+                      type="button"
+                      key={svc}
+                      onClick={() => handleServiceButton(svc)}
+                      className={`py-3 px-4 rounded-lg font-semibold border-2 transition-colors shadow-sm flex items-center justify-center gap-2
+                        ${formData.service === svc ? 'bg-primary-600 text-white border-primary-600 ring-2 ring-primary-400' : 'bg-white/20 text-white border-white/20 hover:bg-white/30 hover:border-primary-400'}`}
+                      aria-pressed={formData.service === svc}
+                    >
+                      {svc === 'Heating' && '🔥'}
+                      {svc === 'Cooling' && '❄️'}
+                      {svc === 'Plumbing' && '🚿'}
+                      {svc === 'Emergency' && '⚡'}
+                      <span>{svc}</span>
+                    </button>
+                  ))}
                 </div>
-                
-                <input 
-                  type="text" 
-                  placeholder="Your Name" 
+                {/* Name & Phone */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleFormChange}
+                    required
+                    placeholder="Your Name*"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:border-primary-400 focus:outline-none"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleFormChange}
+                    required
+                    placeholder="Phone Number*"
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:border-primary-400 focus:outline-none"
+                  />
+                </div>
+                {/* Email */}
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  placeholder="Email (optional)"
                   className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:border-primary-400 focus:outline-none"
                 />
-                
-                <input 
-                  type="tel" 
-                  placeholder="Phone Number" 
-                  className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:border-primary-400 focus:outline-none"
-                />
-                
-                <textarea 
-                  placeholder="Brief description of your issue..." 
+                {/* Service Needed & Urgency */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleFormChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 text-white border border-white/30 focus:border-primary-400 focus:outline-none"
+                  >
+                    {/* TODO: Dropdown bug - native select styling is limited, consider using a custom select for full theme control */}
+                    {serviceOptions.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                  <select
+                    name="urgency"
+                    value={formData.urgency}
+                    onChange={handleFormChange}
+                    className="w-full px-4 py-3 rounded-lg bg-white/20 text-white border border-white/30 focus:border-primary-400 focus:outline-none"
+                  >
+                    {urgencyOptions.map(opt => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
+                  </select>
+                </div>
+                {/* Preferred Contact */}
+                <div className="flex gap-4 items-center">
+                  <span className="text-white/80 text-sm">Preferred Contact:</span>
+                  <label className="flex items-center gap-1 text-white/90 text-sm">
+                    <input
+                      type="radio"
+                      name="preferredContact"
+                      value="phone"
+                      checked={formData.preferredContact === 'phone'}
+                      onChange={handleFormChange}
+                      className="accent-primary-500"
+                    /> Phone
+                  </label>
+                  <label className="flex items-center gap-1 text-white/90 text-sm">
+                    <input
+                      type="radio"
+                      name="preferredContact"
+                      value="email"
+                      checked={formData.preferredContact === 'email'}
+                      onChange={handleFormChange}
+                      className="accent-primary-500"
+                    /> Email
+                  </label>
+                </div>
+                {/* Message */}
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleFormChange}
                   rows={3}
+                  placeholder="Brief description of your issue..."
                   className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:border-primary-400 focus:outline-none resize-none"
                 />
-                
+                {/* Submit Button & Success Message */}
+                {submitStatus === 'success' && (
+                  <div className="w-full bg-green-600/90 text-white text-center rounded-lg py-3 font-semibold mb-2 animate-fade-in">
+                    Thank you! We'll contact you ASAP.
+                  </div>
+                )}
                 <motion.button
+                  type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 rounded-lg font-bold text-lg transition-all duration-300"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 rounded-lg font-bold text-lg transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center"
                 >
+                  {isSubmitting ? (
+                    <svg className="animate-spin h-5 w-5 mr-2 text-white" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" /></svg>
+                  ) : null}
                   Get Free Estimate
                 </motion.button>
-              </div>
+              </form>
             </motion.div>
           </div>
         </div>
@@ -390,13 +516,13 @@ export default function EpicHomePage() {
             </p>
           </motion.div>
 
-          {/* Enhanced Membership Card */}
+          {/* Enhanced Membership Card - now full width */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative max-w-4xl mx-auto"
+            className="relative w-full"
           >
             <div className="bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden shadow-2xl">
               {/* Subtle geometric pattern */}
@@ -493,6 +619,10 @@ export default function EpicHomePage() {
                       </div>
                     </div>
                   </motion.div>
+
+                  <div className="text-center text-accent-400 text-base font-medium mt-6">
+                    A portion of every membership supports local families in need.
+                  </div>
                 </div>
               </div>
             </div>
@@ -541,6 +671,35 @@ export default function EpicHomePage() {
                 <p className="font-semibold text-gray-900">— {testimonial.name}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Giving Back Section */}
+      <section className="py-20 bg-gradient-to-br from-sage-50 to-primary-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center mb-4">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent-100 mr-3">
+              <svg xmlns='http://www.w3.org/2000/svg' className='w-6 h-6 text-accent-500' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z' /></svg>
+            </span>
+            <h2 className="text-4xl font-bold text-primary-900">Giving Back to Our Community</h2>
+          </div>
+          <p className="text-xl text-gray-700 mb-6 pl-14">We're proud to support the Idaho Food Bank and Metro Meals on Wheels—because taking care of our neighbors goes beyond pipes and vents.</p>
+          <div className="bg-white rounded-2xl shadow p-6 mb-6 ml-2">
+            <ul className="space-y-4 list-none">
+              <li className="flex items-start">
+                <span className="text-accent-500 mr-3 mt-1">💧</span>
+                <span className="text-lg text-gray-700">A portion of every service goes directly to supporting local families in need. Your home comfort helps provide food, care, and dignity to others in our community.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-accent-500 mr-3 mt-1">👉</span>
+                <span className="text-lg text-gray-700">Know someone going through a tough time? <b>Nominate a community member in need of Plumbing or HVAC services through our <a href='/contact' className='text-primary-600 underline'>contact form</a></b>. We're here to help where it matters most.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-accent-500 mr-3 mt-1">❤️</span>
+                <span className="text-lg text-gray-700">Thank you for being part of the Pine family. Together, we're building a stronger Idaho.</span>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
