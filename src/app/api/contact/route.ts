@@ -1,4 +1,4 @@
-Pe// src/app/api/contact/route.ts
+// src/app/api/contact/route.ts
 // Contact form handler for Pine Plumbing and Air
 // Requires the following .env variables:
 // SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_SECURE (true/false), EMAIL_TO
