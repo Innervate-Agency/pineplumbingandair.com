@@ -230,7 +230,7 @@ export default function ServicesSection() {
                   <Award className="w-8 h-8 text-accent-600" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">Family Owned</h4>
-                <p className="text-gray-600 text-sm">Three generations of service</p>
+                <p className="text-gray-600 text-sm">Serving the Community is our Priority</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -254,7 +254,7 @@ export default function ServicesSection() {
               Emergency? We're Here 24/7
             </h3>
             <p className="text-xl text-white/90 mb-8">
-              No extra charges for nights, weekends, or holidays.
+              No extra charges for nights, weekends, or holidays for Pine Comfort Club Members.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a

@@ -33,7 +33,7 @@ export default function AboutPage() {
     {
       icon: Award,
       title: "Excellence",
-      description: "Three generations of craftmanship refined into every service call and installation.",
+      description: "Local craftsmanship refined into every service call and installation.",
       color: "from-accent-500 to-accent-600"
     },
     {
@@ -48,32 +48,32 @@ export default function AboutPage() {
     {
       year: "1985",
       title: "The Beginning",
-      description: "Grandpa Tom started Pine Plumbing with just a pickup truck and a promise to always do right by his neighbors."
+      description: "Started Pine Plumbing with just a pickup truck and a promise to always do right by our neighbors."
     },
     {
       year: "2003",
-      title: "Second Generation",
-      description: "Dad joined the business, expanding into HVAC services and building lasting relationships throughout the community."
+      title: "Expanding Services",
+      description: "Expanding into HVAC services and building lasting relationships throughout the community."
     },
     {
       year: "2018",
       title: "Innovation Meets Tradition", 
-      description: "Tom Jr. brought modern technology and the Pine Comfort Club while maintaining our family values."
+      description: "Tom brought modern technology and the Pine Comfort Club while maintaining our family values."
     },
     {
       year: "2024",
       title: "Growing Strong",
-      description: "Three generations serving thousands of families with the same commitment to quality and care."
+      description: "Serving thousands of families with the same commitment to quality and care."
     }
   ]
 
   const certifications = [
-    "Licensed & Bonded Contractor",
-    "EPA Certified Technicians", 
-    "NATE Certified Professionals",
-    "BBB A+ Rating",
-    "Master Plumber Licensed",
-    "Fully Insured & Covered"
+    "HVAC: Lic. #9671762",
+    "Plumbing: Lic. #4371148",
+    "Bonded Contractor",
+    "Certified Professionals",
+    "Fully Insured & Covered",
+    "5 Star Reviews"
   ]
 
   return (
@@ -94,18 +94,18 @@ export default function AboutPage() {
           >
             <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-lg font-medium mb-8 border border-white/20">
               <Home className="w-5 h-5 mr-2" />
-              Three Generations of Service
+              Serving the Community is our Priority
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Meet the
               <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
-                Pine Family
+                Bullock Family
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto mb-12 leading-relaxed">
-              Since 1985, we&apos;ve been more than just your HVAC and plumbing contractors. 
+              Boise born and raised, the Bullocks have been more than just your HVAC and plumbing contractors. 
               We&apos;re your neighbors, your friends, and the family you call when comfort matters most.
             </p>
           </motion.div>
@@ -126,19 +126,13 @@ export default function AboutPage() {
                 Our Story Starts with Family
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Back in 1985, Grandpa Tom had a simple philosophy: treat every customer like family, 
-                do the job right the first time, and always be there when people need you most. 
-                That philosophy hasn&apos;t changed one bit.
+                Hi, I'm Tom Bullock, founder of Pine Plumbing and Air. My wife Jessica and I were both born and raised in Boise, Idaho. I'm a 3rd-generation Idahoan, and Jessica is a 4th-generation Idahoan—we're deeply rooted in this community and proud to serve the Treasure Valley.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                What started as one man with a truck has grown into a three-generation family business 
-                serving thousands of homes and businesses. We've seen technology change, but our 
-                commitment to our community remains rock solid.
+                We started Pine Plumbing and Air with one goal: to provide clean installs, quality work, and honest service our neighbors can rely on. Whether it's a plumbing issue or a heating and cooling upgrade, we treat every job like it's in our own home.
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Today, when you call Pine Plumbing & Air, you&apos;re not just getting a service provider. 
-                You&apos;re getting decades of experience, genuine care, and the peace of mind that comes 
-                from working with people who truly understand what home comfort means.
+                Being locally owned and family operated, we know how important trust, craftsmanship, and community are. When you choose Pine, you're not just hiring a contractor—you're supporting a local family who truly cares.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -183,7 +177,7 @@ export default function AboutPage() {
                       who trust us with their most important possession - their home."
                     </p>
                     <p className="font-semibold text-gray-900">
-                      — Tom Pine Jr., Owner
+                      — Tom Bullock, Owner
                     </p>
                   </div>
                 </div>
@@ -363,7 +357,7 @@ export default function AboutPage() {
               Ready to Join the Pine Family?
             </h2>
             <p className="text-xl mb-8 text-white/90">
-              Experience the difference three generations of expertise and genuine care can make for your home.
+              Experience the difference local expertise and genuine care can make for your home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a

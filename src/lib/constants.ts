@@ -1,9 +1,9 @@
 export const SITE_CONFIG = {
   name: "Pine Plumbing & Air",
-  description: "Expert HVAC and plumbing services serving the Boise Metro with 20 years of experience, genuine care, and unwavering commitment to our community.",
+  description: "Expert HVAC and plumbing services serving the Boise Metro with 10+ years of experience, genuine care, and unwavering commitment to our community.",
   url: "https://pineplumbingandair.com",
-  phone: "208-944-PINE",
-  phoneDisplay: "(208) 944-PINE",
+  phone: "208-944-7463",
+  phoneDisplay: "(208) 944-7463",
   email: "contact@pineplumbingandair.com",
   address: {
     street: "Serving Boise Metro Area",
@@ -16,7 +16,7 @@ export const SITE_CONFIG = {
     regular: "Monday - Friday: 8AM - 6PM"
   },
   yearsFounded: "2025",
-  yearsExperience: "20+ Years Experience"
+  yearsExperience: "10+ Years Experience"
 }
 
 export const SERVICE_DETAILS = {
@@ -466,10 +466,11 @@ export const PRICING = {
     price: 99,
     description: "Annual membership with exclusive benefits",
     benefits: [
-      "1 Annual Whole-Home Plumbing & HVAC Inspection",
-      "Priority Scheduling – skip the line when you need us most", 
-      "10% OFF all repairs – all year long",
-      "Exclusive Member-Only Specials"
+      "10% off all services: Save on all the professional services we offer",
+      "Waived diagnostic fees: Enjoy diagnostic services at no additional cost",
+      "Priority Scheduling: Get the fastest possible service with our priority scheduling",
+      "Discounted System Maintenance: Save BIG on your regular maintenance needs for Plumbing, Heating, Cooling and Indoor Air Quality",
+      "No After Hours Fee, skip the line, save money, sleep peacefully. Your Boise Metro home deserves VIP treatment"
     ]
   }
 }

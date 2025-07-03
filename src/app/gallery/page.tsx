@@ -122,7 +122,7 @@ export default function GalleryPage() {
     {
       name: "Jennifer Martinez",
       rating: 5,
-      text: "Three generations of expertise shows in every detail. They didn't just install our AC - they optimized our entire home's airflow.",
+      text: "Local expertise shows in every detail. They didn't just install our AC - they optimized our entire home's airflow.",
       project: "Central Air Installation & Ductwork"
     }
   ]

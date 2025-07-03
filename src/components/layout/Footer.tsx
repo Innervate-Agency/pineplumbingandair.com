@@ -49,8 +49,8 @@ export default function Footer() {
 
   const certifications = [
     'EPA Certified',
-    'NATE Certified', 
-    'BBB A+ Rating',
+    'HVAC: Lic. #9671762',
+    'Plumbing: Lic. #4371148',
     'Licensed & Bonded'
   ]
 
@@ -76,7 +76,7 @@ export default function Footer() {
               Need Help Right Now?
             </h2>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12">
-              24/7 emergency repairs available. No extra charges for nights, weekends, or holidays. 
+              24/7 emergency repairs available. No extra charges for nights, weekends, or holidays for Pine Comfort Club Members. 
               Your Boise Metro family's comfort can't wait.
             </p>
           </motion.div>

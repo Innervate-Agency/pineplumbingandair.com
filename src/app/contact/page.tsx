@@ -402,7 +402,7 @@ export default function ContactPage() {
                     <span className="font-semibold text-red-800">Emergency Service</span>
                   </div>
                   <p className="text-red-700 text-sm mt-1">
-                    Available 24/7 with no extra charges for nights, weekends, or holidays.
+                    Available 24/7 with no extra charges for nights, weekends, or holidays for Pine Comfort Club Members.
                   </p>
                 </div>
               </div>
@@ -429,30 +429,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Quick Stats */}
-              <div className="bg-gradient-to-br from-primary-900 to-earth-900 rounded-3xl p-8 shadow-xl text-white">
-                <h3 className="text-2xl font-bold mb-6">
-                  Why Choose Pine?
-                </h3>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="text-3xl font-bold mb-1">24/7</div>
-                    <div className="text-white/80 text-sm">Emergency Service</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold mb-1">98%</div>
-                    <div className="text-white/80 text-sm">Customer Satisfaction</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold mb-1">3</div>
-                    <div className="text-white/80 text-sm">Generations of Service</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-3xl font-bold mb-1">2Hr</div>
-                    <div className="text-white/80 text-sm">Average Response</div>
-                  </div>
-                </div>
-              </div>
+
             </motion.div>
           </div>
         </div>

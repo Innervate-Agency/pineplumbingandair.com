@@ -87,7 +87,7 @@ export default function ServicesPage() {
   }
 
   const whyChooseUs = [
-    { icon: Clock, title: '24/7 Emergency Service', description: 'No extra charges for nights, weekends, or holidays' },
+    { icon: Clock, title: '24/7 Emergency Service', description: 'No extra charges for nights, weekends, or holidays for Pine Comfort Club Members' },
     { icon: Shield, title: 'Licensed & Insured', description: 'Fully bonded with comprehensive liability coverage' },
     { icon: Award, title: 'Satisfaction Guaranteed', description: '100% satisfaction or we make it right, no questions asked' },
     { icon: Users, title: `${SITE_CONFIG.yearsExperience}`, description: 'Committed to serving the Boise Metro community with expertise' }

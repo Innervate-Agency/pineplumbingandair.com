@@ -189,7 +189,7 @@ export default function ServiceModal({ serviceKey, isOpen, onClose }: ServiceMod
                       <Award className="w-6 h-6 text-primary-600" />
                     </div>
                     <h4 className="font-semibold text-sm text-gray-900 mb-1">Family Owned</h4>
-                    <p className="text-xs text-gray-600">Three generations of service</p>
+                    <p className="text-xs text-gray-600">Serving the Community is our Priority</p>
                   </div>
                   <div className="text-center">
                     <div className="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-2">

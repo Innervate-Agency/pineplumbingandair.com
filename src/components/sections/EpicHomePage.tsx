@@ -84,7 +84,7 @@ export default function EpicHomePage() {
               </h1>
 
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                With {SITE_CONFIG.yearsExperience} in the industry, we're licensed, insured, and committed to serving the Boise Metro community with honest pricing, 
+                With 10+ Years of Experience in the industry, we're licensed, insured, and committed to serving the Boise Metro community with honest pricing, 
                 quality workmanship, and guaranteed satisfaction.
               </p>
 
