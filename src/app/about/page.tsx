@@ -187,7 +187,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Timeline - ARCHIVED FOR FUTURE REIMPLEMENTATION */}
+      {/* 
       <section className="py-24 bg-gradient-to-br from-gray-50 to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -206,7 +207,6 @@ export default function AboutPage() {
           </motion.div>
 
           <div className="relative">
-            {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary-600 to-primary-700 rounded-full"></div>
 
             <div className="space-y-16">
@@ -240,6 +240,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Community Commitment Section */}
       <section className="py-20 bg-gradient-to-br from-sage-50 to-primary-50">

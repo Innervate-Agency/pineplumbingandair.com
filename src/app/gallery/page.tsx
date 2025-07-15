@@ -108,22 +108,28 @@ export default function GalleryPage() {
 
   const testimonials = [
     {
-      name: "Sarah & Mike Johnson",
+      name: "ColeBee R.",
       rating: 5,
-      text: "Pine Plumbing & Air transformed our 1950s home into a modern comfort paradise. Professional, clean, and incredibly knowledgeable.",
-      project: "Complete HVAC Modernization"
+      text: "Super knowledgeable, thorough, and helpful with maintenance tips. Pine has earned a lifelong customer—I'll be sending all my referrals their way!",
+      project: "Maintenance & Service"
     },
     {
-      name: "David Chen",
+      name: "Josh P.",
       rating: 5,
-      text: "Emergency service at its finest. Water heater failed at 2AM and they had us back to normal by breakfast. Truly 24/7 service!",
-      project: "Emergency Water Heater Replacement"
+      text: "Tom is a pleasure to have at our home! Just a check up on the HVAC but he was very thorough and professional. I would highly recommend Tom for any HVAC needs!",
+      project: "HVAC Maintenance"
     },
     {
-      name: "Jennifer Martinez",
+      name: "Monica L.",
       rating: 5,
-      text: "Local expertise shows in every detail. They didn't just install our AC - they optimized our entire home's airflow.",
-      project: "Central Air Installation & Ductwork"
+      text: "I've worked with Thomas multiple times for both HVAC and plumbing across different homes. He consistently exceeds expectations with top-notch work, great cleanup, and unmatched honesty. Knowledgeable, dependable, and highly recommended!",
+      project: "HVAC & Plumbing Services"
+    },
+    {
+      name: "Julia B.",
+      rating: 5,
+      text: "The BEST service I've ever experienced! Tom replaced our old HVAC system and made sure we understood every step. Honest, reliable, and the only one we'd call—Tom is the man for the job!",
+      project: "HVAC System Replacement"
     }
   ]
 

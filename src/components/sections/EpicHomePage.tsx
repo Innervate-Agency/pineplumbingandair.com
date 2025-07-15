@@ -1,16 +1,17 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Phone, Star, Check, ArrowRight, Award,
   Snowflake, Flame, Droplets, Wind
 } from 'lucide-react'
-import { SITE_CONFIG, PRICING } from '@/lib/constants'
+import { SITE_CONFIG, PRICING, SERVICES } from '@/lib/constants'
 import ServicesSection from '@/components/sections/ServiceSection'
 import { useState } from 'react'
 
 export default function EpicHomePage() {
 
+  // Original 4 main service categories
   const services = [
     { icon: Flame, title: "Heating", color: "from-secondary-500 to-secondary-600", count: "24/7" },
     { icon: Snowflake, title: "Cooling", color: "from-primary-500 to-primary-600", count: "365 Days" },
@@ -18,10 +19,46 @@ export default function EpicHomePage() {
     { icon: Wind, title: "Air Quality", color: "from-sage-500 to-sage-600", count: "Pure Air" }
   ]
 
+  // Service filter state
+  const [activeFilter, setActiveFilter] = useState('All Services')
+
+  // Get individual services for filtering
+  const getFilteredServices = () => {
+    if (activeFilter === 'All Services') return null
+    
+    const serviceMap = {
+      'Heating': SERVICES.heating.services,
+      'Cooling': SERVICES.cooling.services,
+      'Plumbing': SERVICES.plumbing.services,
+      'Air Quality': SERVICES.airQuality.services
+    }
+    
+    return serviceMap[activeFilter as keyof typeof serviceMap] || null
+  }
+
+  const filteredServices = getFilteredServices()
+
   const testimonials = [
-    { name: "Sarah M.", text: "Pine saved our Christmas when our furnace died. Tom was here in 30 minutes!", rating: 5 },
-    { name: "Mike R.", text: "The Comfort Club is worth every penny. Priority service and 10% off everything!", rating: 5 },
-    { name: "Jenny L.", text: "Professional, honest, and they actually care about our family's comfort.", rating: 5 }
+    { 
+      name: "ColeBee R.", 
+      text: "Super knowledgeable, thorough, and helpful with maintenance tips. Pine has earned a lifelong customer—I'll be sending all my referrals their way!", 
+      rating: 5 
+    },
+    { 
+      name: "Josh P.", 
+      text: "Tom is a pleasure to have at our home! Just a check up on the HVAC but he was very thorough and professional. I would highly recommend Tom for any HVAC needs!", 
+      rating: 5 
+    },
+    { 
+      name: "Monica L.", 
+      text: "I've worked with Thomas multiple times for both HVAC and plumbing across different homes. He consistently exceeds expectations with top-notch work, great cleanup, and unmatched honesty. Knowledgeable, dependable, and highly recommended!", 
+      rating: 5 
+    },
+    { 
+      name: "Julia B.", 
+      text: "The BEST service I've ever experienced! Tom replaced our old HVAC system and made sure we understood every step. Honest, reliable, and the only one we'd call—Tom is the man for the job!", 
+      rating: 5 
+    }
   ]
 
   // Contact form state for hero
@@ -135,7 +172,7 @@ export default function EpicHomePage() {
               <div className="flex flex-wrap items-center gap-6 mb-8">
                 <div className="flex items-center">
                   <Star className="w-5 h-5 text-accent-400 mr-2" />
-                  <span className="text-white font-medium">4.9★ Google Reviews</span>
+                  <span className="text-white font-medium">5★ Google Reviews</span>
                 </div>
                 <div className="flex items-center">
                   <Award className="w-5 h-5 text-secondary-400 mr-2" />
@@ -325,18 +362,22 @@ export default function EpicHomePage() {
               Complete Home Comfort Solutions
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              From emergency repairs to new installations, we've got Boise Metro covered
+              {activeFilter === 'All Services' 
+                ? 'From emergency repairs to new installations, we\'ve got Boise Metro covered'
+                : `Showing ${filteredServices?.length || 0} ${activeFilter.toLowerCase()} service${filteredServices?.length !== 1 ? 's' : ''} available`
+              }
             </p>
             
             {/* Service Type Filters */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              {['All Services', 'Heating', 'Cooling', 'Plumbing', 'Air Quality'].map((filter, index) => (
+              {['All Services', 'Heating', 'Cooling', 'Plumbing', 'Air Quality'].map((filter) => (
                 <motion.button
                   key={filter}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => setActiveFilter(filter)}
                   className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                    index === 0 
+                    activeFilter === filter
                       ? 'bg-primary-600 text-white shadow-lg' 
                       : 'bg-white text-gray-600 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300'
                   }`}
@@ -348,105 +389,110 @@ export default function EpicHomePage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group relative"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.03, y: -8 }}
-                  className="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 group-hover:border-primary-200"
-                >
-                  {/* Service Header with Icon and Badge */}
-                  <div className={`relative p-6 bg-gradient-to-br ${service.color} text-white`}>
-                    <div className="flex items-center justify-between mb-4">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <service.icon className="w-8 h-8 text-white" />
-                      </motion.div>
-                      <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
-                        {service.count}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-                    <div className="absolute -bottom-6 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
-                        <ArrowRight className="w-5 h-5 text-gray-700 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Service Content */}
-                  <div className="p-6 pt-8">
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center text-sm text-gray-600">
-                        <Check className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Same-day service available</span>
-                      </div>
-                      <div className="flex items-center text-sm text-gray-600">
-                        <Check className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Licensed & insured technicians</span>
-                      </div>
-                      <div className="flex items-center text-sm text-gray-600">
-                        <Check className="w-4 h-4 text-green-500 mr-2" />
-                        <span>Upfront, honest pricing</span>
-                      </div>
-                    </div>
-
-                    {/* Price Range */}
-                    <div className="mb-4 p-3 bg-gray-50 rounded-lg">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-700">Starting from</span>
-                        <span className="text-lg font-bold text-primary-600">
-                          {service.title === 'Heating' ? '$89' : 
-                           service.title === 'Cooling' ? '$79' :
-                           service.title === 'Plumbing' ? '$49' : '$99'}
-                        </span>
-                      </div>
-                      <p className="text-xs text-gray-500 mt-1">
-                        {service.title === 'Air Quality' ? 'system inspection' : 'service call + diagnosis'}
-                      </p>
-                    </div>
-
-                    {/* Enhanced CTA */}
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+            <AnimatePresence mode="wait">
+              {activeFilter === 'All Services' ? (
+                // Show original 4 main service cards
+                services.map((service, index) => (
+                  <motion.div
+                    key={service.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="group relative"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.03, y: -8 }}
+                      className="relative bg-white rounded-2xl shadow-xl hover:shadow-3xl transition-all duration-500 overflow-hidden border border-gray-100 group-hover:border-primary-200 cursor-pointer"
                       onClick={() => handleLearnMore(service.title)}
-                      className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-primary-600 hover:to-primary-700 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group relative overflow-hidden"
                     >
-                      <span className="relative z-10">View Services & Gallery</span>
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      />
-                    </motion.button>
-                  </div>
-
-                  {/* Hover Preview */}
-                  <div className="absolute inset-0 bg-primary-600/95 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
-                    <div className="text-center text-white">
-                      <service.icon className="w-12 h-12 text-white mx-auto mb-4" />
-                      <h4 className="text-lg font-bold mb-2">Quick Preview</h4>
-                      <p className="text-sm text-white/90 mb-4">
-                        {service.title === 'Heating' ? 'Furnace repair, installation, tune-ups & heat pumps' :
-                         service.title === 'Cooling' ? 'AC repair, installation, maintenance & mini-splits' :
-                         service.title === 'Plumbing' ? 'Repairs, water heaters, pipe work & installations' :
-                         'Air filtration, humidifiers & indoor air quality solutions'}
-                      </p>
-                      <div className="text-xs text-white/80">
-                        Click to see full gallery & pricing
+                      {/* Service Header with Icon and Badge */}
+                      <div className={`relative p-6 bg-gradient-to-br ${service.color} text-white`}>
+                        <div className="flex items-center justify-between mb-4">
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                          >
+                            <service.icon className="w-8 h-8 text-white" />
+                          </motion.div>
+                          <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
+                            {service.count}
+                          </span>
+                        </div>
+                        <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                       </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
+
+                      {/* Service Content */}
+                      <div className="p-6 pt-8">
+                        <div className="space-y-3 mb-6">
+                          <div className="flex items-center text-sm text-gray-600">
+                            <Check className="w-4 h-4 text-green-500 mr-2" />
+                            <span>Same-day service available</span>
+                          </div>
+                          <div className="flex items-center text-sm text-gray-600">
+                            <Check className="w-4 h-4 text-green-500 mr-2" />
+                            <span>Licensed & insured technicians</span>
+                          </div>
+                          <div className="flex items-center text-sm text-gray-600">
+                            <Check className="w-4 h-4 text-green-500 mr-2" />
+                            <span>Upfront, honest pricing</span>
+                          </div>
+                        </div>
+
+                        {/* Price Range */}
+                        <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm font-medium text-gray-700">Diagnostic Fee</span>
+                            <span className="text-lg font-bold text-primary-600">$49</span>
+                          </div>
+                          <p className="text-xs text-gray-500 mt-1">
+                            Professional diagnosis for all repairs
+                          </p>
+                        </div>
+
+                        {/* Enhanced CTA */}
+                        <div className="w-full bg-gradient-to-r from-gray-900 to-gray-800 hover:from-primary-600 hover:to-primary-700 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center group relative overflow-hidden">
+                          <span className="relative z-10">See Service Details</span>
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))
+              ) : (
+                // Show smaller service cards for filtered services
+                filteredServices?.map((serviceName, index) => (
+                  <motion.div
+                    key={serviceName}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="group relative"
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.02, y: -4 }}
+                      className="relative bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all duration-300 overflow-hidden border border-gray-100 group-hover:border-primary-200 cursor-pointer"
+                      onClick={() => handleLearnMore(serviceName)}
+                    >
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-lg font-semibold text-gray-900">{serviceName}</h3>
+                        <ArrowRight className="w-5 h-5 text-primary-600 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Professional {serviceName.toLowerCase()} services with upfront pricing
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-primary-600">$49 Diagnostic</span>
+                        <span className="text-xs text-gray-500">Learn More →</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))
+              )}
+            </AnimatePresence>
           </div>
 
           {/* Call to Action Below Services */}
@@ -614,7 +660,7 @@ export default function EpicHomePage() {
                           {[1,2,3,4,5].map((i) => (
                             <Star key={i} className="w-3 h-3 text-accent-400 fill-current" />
                           ))}
-                          <span className="text-white/80 text-xs ml-2">4.9/5 satisfaction</span>
+                          <span className="text-white/80 text-xs ml-2">5/5 satisfaction</span>
                         </div>
                       </div>
                     </div>
@@ -644,14 +690,14 @@ export default function EpicHomePage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Families Choose Pine
+              5-Star Service. Guaranteed.
             </h2>
             <p className="text-xl text-gray-600">
               Real stories from real neighbors who trust us with their home comfort
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}

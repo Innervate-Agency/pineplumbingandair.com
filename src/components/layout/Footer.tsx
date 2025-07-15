@@ -28,7 +28,6 @@ export default function Footer() {
   const quickLinks = [
     { name: 'About Us', href: '/about' },
     { name: 'Our Services', href: '/services' },
-    { name: 'Project Gallery', href: '/gallery' },
     { name: 'Contact Us', href: '/contact' },
     { name: 'Pine Comfort Club', href: '/services#membership' },
   ]

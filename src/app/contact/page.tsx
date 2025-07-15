@@ -104,7 +104,7 @@ export default function ContactPage() {
       icon: MapPin,
       title: 'Service Area',
       description: 'We Come to You',
-      contact: 'Greater Metro Area',
+      contact: 'Boise Metro Area',
       action: '#service-area',
       bgColor: 'from-secondary-500 to-secondary-600',
       urgent: false
@@ -422,10 +422,10 @@ export default function ContactPage() {
                     <MapPin className="w-10 h-10 text-white" />
                   </div>
                   <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                    Greater Metro Area
+                    Boise Metro Area
                   </h4>
                   <p className="text-gray-600 mb-4">
-                    We proudly serve families and businesses throughout the greater metropolitan area.
+                    We proudly serve families and businesses throughout The Treasure Valley Area.
                   </p>
                   <p className="text-sm text-gray-500">
                     Not sure if we serve your area? Give us a call - we often make exceptions for our neighbors!
