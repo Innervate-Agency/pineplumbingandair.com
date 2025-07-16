@@ -1,12 +1,11 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
+import {
   Phone, Star, Check, ArrowRight, Award,
   Snowflake, Flame, Droplets, Wind
 } from 'lucide-react'
 import { SITE_CONFIG, PRICING, SERVICES } from '@/lib/constants'
-import ServicesSection from '@/components/sections/ServiceSection'
 import { useState } from 'react'
 
 export default function EpicHomePage() {
@@ -25,39 +24,39 @@ export default function EpicHomePage() {
   // Get individual services for filtering
   const getFilteredServices = () => {
     if (activeFilter === 'All Services') return null
-    
+
     const serviceMap = {
       'Heating': SERVICES.heating.services,
       'Cooling': SERVICES.cooling.services,
       'Plumbing': SERVICES.plumbing.services,
       'Air Quality': SERVICES.airQuality.services
     }
-    
+
     return serviceMap[activeFilter as keyof typeof serviceMap] || null
   }
 
   const filteredServices = getFilteredServices()
 
   const testimonials = [
-    { 
-      name: "ColeBee R.", 
-      text: "Super knowledgeable, thorough, and helpful with maintenance tips. Pine has earned a lifelong customer—I'll be sending all my referrals their way!", 
-      rating: 5 
+    {
+      name: "ColeBee R.",
+      text: "Super knowledgeable, thorough, and helpful with maintenance tips. Pine has earned a lifelong customer—I'll be sending all my referrals their way!",
+      rating: 5
     },
-    { 
-      name: "Josh P.", 
-      text: "Tom is a pleasure to have at our home! Just a check up on the HVAC but he was very thorough and professional. I would highly recommend Tom for any HVAC needs!", 
-      rating: 5 
+    {
+      name: "Josh P.",
+      text: "Tom is a pleasure to have at our home! Just a check up on the HVAC but he was very thorough and professional. I would highly recommend Tom for any HVAC needs!",
+      rating: 5
     },
-    { 
-      name: "Monica L.", 
-      text: "I've worked with Thomas multiple times for both HVAC and plumbing across different homes. He consistently exceeds expectations with top-notch work, great cleanup, and unmatched honesty. Knowledgeable, dependable, and highly recommended!", 
-      rating: 5 
+    {
+      name: "Monica L.",
+      text: "I've worked with Thomas multiple times for both HVAC and plumbing across different homes. He consistently exceeds expectations with top-notch work, great cleanup, and unmatched honesty. Knowledgeable, dependable, and highly recommended!",
+      rating: 5
     },
-    { 
-      name: "Julia B.", 
-      text: "The BEST service I've ever experienced! Tom replaced our old HVAC system and made sure we understood every step. Honest, reliable, and the only one we'd call—Tom is the man for the job!", 
-      rating: 5 
+    {
+      name: "Julia B.",
+      text: "The BEST service I've ever experienced! Tom replaced our old HVAC system and made sure we understood every step. Honest, reliable, and the only one we'd call—Tom is the man for the job!",
+      rating: 5
     }
   ]
 
@@ -107,7 +106,7 @@ export default function EpicHomePage() {
     // Navigate to services page with appropriate section
     const serviceMap: Record<string, string> = {
       'Heating': '/services#heating',
-      'Cooling': '/services#cooling', 
+      'Cooling': '/services#cooling',
       'Plumbing': '/services#plumbing',
       'Air Quality': '/services#air-quality'
     }
@@ -362,12 +361,12 @@ export default function EpicHomePage() {
               Complete Home Comfort Solutions
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              {activeFilter === 'All Services' 
+              {activeFilter === 'All Services'
                 ? 'From emergency repairs to new installations, we\'ve got Boise Metro covered'
                 : `Showing ${filteredServices?.length || 0} ${activeFilter.toLowerCase()} service${filteredServices?.length !== 1 ? 's' : ''} available`
               }
             </p>
-            
+
             {/* Service Type Filters */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               {['All Services', 'Heating', 'Cooling', 'Plumbing', 'Air Quality'].map((filter) => (
@@ -376,11 +375,10 @@ export default function EpicHomePage() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                    activeFilter === filter
-                      ? 'bg-primary-600 text-white shadow-lg' 
-                      : 'bg-white text-gray-600 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300'
-                  }`}
+                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeFilter === filter
+                    ? 'bg-primary-600 text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-primary-50 hover:text-primary-600 border border-gray-200 hover:border-primary-300'
+                    }`}
                 >
                   {filter}
                 </motion.button>
@@ -439,14 +437,10 @@ export default function EpicHomePage() {
                           </div>
                         </div>
 
-                        {/* Price Range */}
+                        {/* Service Features */}
                         <div className="mb-4 p-3 bg-gray-50 rounded-lg">
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-gray-700">Diagnostic Fee</span>
-                            <span className="text-lg font-bold text-primary-600">$49</span>
-                          </div>
-                          <p className="text-xs text-gray-500 mt-1">
-                            Professional diagnosis for all repairs
+                          <p className="text-sm font-medium text-gray-700 text-center">
+                            Professional service with upfront pricing
                           </p>
                         </div>
 
@@ -485,7 +479,7 @@ export default function EpicHomePage() {
                         Professional {serviceName.toLowerCase()} services with upfront pricing
                       </p>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-primary-600">$49 Diagnostic</span>
+                        <span className="text-sm font-medium text-primary-600">Professional Service</span>
                         <span className="text-xs text-gray-500">Learn More →</span>
                       </div>
                     </motion.div>
@@ -529,11 +523,40 @@ export default function EpicHomePage() {
         </div>
       </section>
 
+      {/* Giving Back Section */}
+      <section className="py-20 bg-gradient-to-br from-sage-50 to-primary-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center mb-4">
+            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent-100 mr-3">
+              <svg xmlns='http://www.w3.org/2000/svg' className='w-6 h-6 text-accent-500' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z' /></svg>
+            </span>
+            <h2 className="text-4xl font-bold text-primary-900">Giving Back to Our Community</h2>
+          </div>
+          <p className="text-xl text-gray-700 mb-6 pl-14">We're proud to support the Idaho Food Bank and Metro Meals on Wheels—because taking care of our neighbors goes beyond pipes and vents.</p>
+          <div className="bg-white rounded-2xl shadow p-6 mb-6 ml-2">
+            <ul className="space-y-4 list-none">
+              <li className="flex items-start">
+                <span className="text-accent-500 mr-3 mt-1">💧</span>
+                <span className="text-lg text-gray-700">A portion of every service goes directly to supporting local families in need. Your home comfort helps provide food, care, and dignity to others in our community.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-accent-500 mr-3 mt-1">👉</span>
+                <span className="text-lg text-gray-700">Know someone going through a tough time? <b>Nominate a community member in need of Plumbing or HVAC services through our <a href='/contact' className='text-primary-600 underline'>contact form</a></b>. We're here to help where it matters most.</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-accent-500 mr-3 mt-1">❤️</span>
+                <span className="text-lg text-gray-700">Thank you for being part of the Pine family. Together, we're building a stronger Idaho.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* Pine Comfort Club Section - Enticing & Professional */}
       <section className="py-20 bg-gradient-to-br from-slate-50 to-primary-50 relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22%234F46E5%22 fill-opacity=%220.03%22%3E%3Ccircle cx=%2210%22 cy=%2210%22 r=%221%22/%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -542,7 +565,7 @@ export default function EpicHomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <motion.div 
+            <motion.div
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-accent-500 to-accent-600 rounded-full text-white font-semibold mb-6 shadow-lg"
               whileHover={{ scale: 1.05 }}
             >
@@ -574,7 +597,7 @@ export default function EpicHomePage() {
               {/* Subtle geometric pattern */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-white/5 to-transparent rounded-full -mr-32 -mt-32"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-primary-400/10 to-transparent rounded-full -ml-24 -mb-24"></div>
-              
+
               <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                   <div className="flex items-center mb-6">
@@ -589,7 +612,7 @@ export default function EpicHomePage() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="mb-8">
                     <h3 className="text-2xl font-bold mb-4">Everything You Need. Nothing You Don't.</h3>
                     <p className="text-xl text-white/90 leading-relaxed">
@@ -637,7 +660,7 @@ export default function EpicHomePage() {
                       <span className="text-lg leading-relaxed">{benefit}</span>
                     </motion.div>
                   ))}
-                  
+
                   {/* Social Proof */}
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -648,7 +671,7 @@ export default function EpicHomePage() {
                   >
                     <div className="flex items-center">
                       <div className="flex -space-x-2 mr-3">
-                        {[1,2,3,4].map((i) => (
+                        {[1, 2, 3, 4].map((i) => (
                           <div key={i} className="w-8 h-8 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full border-2 border-white flex items-center justify-center">
                             <span className="text-white text-xs font-bold">{i}</span>
                           </div>
@@ -657,7 +680,7 @@ export default function EpicHomePage() {
                       <div>
                         <div className="text-white font-medium text-sm">500+ Happy Members</div>
                         <div className="flex items-center">
-                          {[1,2,3,4,5].map((i) => (
+                          {[1, 2, 3, 4, 5].map((i) => (
                             <Star key={i} className="w-3 h-3 text-accent-400 fill-current" />
                           ))}
                           <span className="text-white/80 text-xs ml-2">5/5 satisfaction</span>
@@ -675,9 +698,6 @@ export default function EpicHomePage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Services Section with Modal */}
-      <ServicesSection />
 
       {/* Trust Section */}
       <section className="py-20 bg-white">
@@ -721,34 +741,69 @@ export default function EpicHomePage() {
         </div>
       </section>
 
-      {/* Giving Back Section */}
-      <section className="py-20 bg-gradient-to-br from-sage-50 to-primary-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center mb-4">
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-accent-100 mr-3">
-              <svg xmlns='http://www.w3.org/2000/svg' className='w-6 h-6 text-accent-500' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z' /></svg>
-            </span>
-            <h2 className="text-4xl font-bold text-primary-900">Giving Back to Our Community</h2>
-          </div>
-          <p className="text-xl text-gray-700 mb-6 pl-14">We're proud to support the Idaho Food Bank and Metro Meals on Wheels—because taking care of our neighbors goes beyond pipes and vents.</p>
-          <div className="bg-white rounded-2xl shadow p-6 mb-6 ml-2">
-            <ul className="space-y-4 list-none">
-              <li className="flex items-start">
-                <span className="text-accent-500 mr-3 mt-1">💧</span>
-                <span className="text-lg text-gray-700">A portion of every service goes directly to supporting local families in need. Your home comfort helps provide food, care, and dignity to others in our community.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-accent-500 mr-3 mt-1">👉</span>
-                <span className="text-lg text-gray-700">Know someone going through a tough time? <b>Nominate a community member in need of Plumbing or HVAC services through our <a href='/contact' className='text-primary-600 underline'>contact form</a></b>. We're here to help where it matters most.</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-accent-500 mr-3 mt-1">❤️</span>
-                <span className="text-lg text-gray-700">Thank you for being part of the Pine family. Together, we're building a stronger Idaho.</span>
-              </li>
-            </ul>
+      {/* CTA Buttons Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row gap-8 items-stretch">
+            {/* Need a Repair CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="flex-1 bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 border border-primary-100"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Need a Repair?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Professional diagnostic service to identify and fix the issue.
+              </p>
+              <div className="mb-6">
+                <div className="text-2xl font-bold text-primary-600">Professional Service</div>
+                <div className="text-sm text-gray-500">Upfront Pricing</div>
+              </div>
+              <button className="w-full bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 shadow-md transition-colors">
+                Schedule Diagnostic
+              </button>
+            </motion.div>
+
+            {/* Comfort Club CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="flex-1 bg-gradient-to-br from-secondary-600 to-secondary-700 rounded-2xl p-8 text-white text-center hover:from-secondary-700 hover:to-secondary-800 transition-all duration-300 shadow-xl"
+            >
+              <div className="flex items-center justify-center mb-4">
+                <Star className="w-8 h-8 text-yellow-400 mr-2" />
+                <h3 className="text-2xl font-bold">Comfort Club</h3>
+              </div>
+              <p className="text-white/90 mb-6">
+                Priority service, guaranteed savings, and peace of mind.
+              </p>
+              <div className="mb-6">
+                <div className="text-4xl font-bold">${PRICING.membership.price}</div>
+                <div className="text-sm text-white/80">per year</div>
+              </div>
+              <div className="text-white/90 text-base font-medium mb-4">
+                <span className="font-semibold">$150 after-hours fee waived for members.</span>
+              </div>
+              <button className="w-full bg-white text-secondary-700 px-6 py-3 rounded-xl font-semibold hover:bg-secondary-50 shadow-md transition-colors">
+                Join Today
+              </button>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Services Section with Modal - REMOVED to eliminate duplicate services section */}
+      {/* <ServicesSection /> */}
+
+
+
+
     </div>
   )
 }
