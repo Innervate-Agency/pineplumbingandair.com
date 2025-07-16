@@ -99,14 +99,28 @@
     font-family: var(--font-sans);
   }
 
+  html.dark {
+    background-color: #0f172a;
+    color: #f8fafc;
+  }
+
   body {
     background-color: #ffffff;
     color: #171717;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
 
+  body.dark {
+    background-color: #0f172a;
+    color: #f8fafc;
+  }
+
   * {
     color-scheme: light;
+  }
+
+  .dark * {
+    color-scheme: dark;
   }
 }
 
@@ -120,3 +134,52 @@
 }
 
 /* Restored normal navbar - no extra body padding needed */
+
+/* Dark mode utilities */
+.dark .bg-white {
+  background-color: #1e293b;
+}
+
+.dark .text-gray-900 {
+  color: #f1f5f9;
+}
+
+.dark .text-gray-700 {
+  color: #cbd5e1;
+}
+
+.dark .text-gray-600 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-500 {
+  color: #64748b;
+}
+
+.dark .text-gray-300 {
+  color: #475569;
+}
+
+.dark .bg-gray-50 {
+  background-color: #334155;
+}
+
+.dark .bg-gray-100 {
+  background-color: #475569;
+}
+
+.dark .border-gray-200 {
+  border-color: #475569;
+}
+
+.dark .border-gray-100 {
+  border-color: #475569;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
