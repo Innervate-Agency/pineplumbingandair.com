@@ -2,8 +2,9 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { 
-  ChevronLeft, ChevronRight, X, Star, Clock, 
+import Image from 'next/image'
+import {
+  ChevronLeft, ChevronRight, X, Star, Clock,
   MapPin, Calendar, Play, Image as ImageIcon
 } from 'lucide-react'
 
@@ -102,8 +103,8 @@ export default function GalleryPage() {
     }
   ]
 
-  const filteredProjects = selectedCategory === 'all' 
-    ? projects 
+  const filteredProjects = selectedCategory === 'all'
+    ? projects
     : projects.filter(project => project.category === selectedCategory)
 
   const testimonials = [
@@ -146,7 +147,7 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -158,16 +159,16 @@ export default function GalleryPage() {
               <ImageIcon className="w-5 h-5 mr-2" />
               Real Projects, Real Results
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Project
               <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
                 Gallery
               </span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto mb-12 leading-relaxed">
-              See the Pine difference in action. Every project tells a story of craftsmanship, 
+              See the Pine difference in action. Every project tells a story of craftsmanship,
               innovation, and families finding their perfect comfort zone.
             </p>
           </motion.div>
@@ -184,11 +185,10 @@ export default function GalleryPage() {
                 onClick={() => setSelectedCategory(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${selectedCategory === category.id
+                  ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 {category.name}
                 <span className="ml-2 text-sm opacity-75">({category.count})</span>
@@ -222,20 +222,24 @@ export default function GalleryPage() {
                   <div className="relative h-64 overflow-hidden">
                     <div className="absolute inset-0 flex">
                       <div className="w-1/2 relative overflow-hidden">
-                        <img 
-                          src={project.beforeImage} 
+                        <Image
+                          src={project.beforeImage}
                           alt="Before"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          sizes="(max-width: 768px) 50vw, 25vw"
                         />
                         <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                           Before
                         </div>
                       </div>
                       <div className="w-1/2 relative overflow-hidden">
-                        <img 
-                          src={project.afterImage} 
+                        <Image
+                          src={project.afterImage}
                           alt="After"
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          sizes="(max-width: 768px) 50vw, 25vw"
                         />
                         <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                           After
@@ -262,15 +266,15 @@ export default function GalleryPage() {
                         ))}
                       </div>
                     </div>
-                    
+
                     <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
                       {project.title}
                     </h3>
-                    
+
                     <p className="text-gray-600 mb-4 line-clamp-2">
                       {project.description}
                     </p>
-                    
+
                     <div className="flex items-center justify-between text-sm text-gray-500">
                       <div className="flex items-center">
                         <MapPin className="w-4 h-4 mr-1" />
@@ -323,11 +327,11 @@ export default function GalleryPage() {
                       <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  
+
                   <blockquote className="text-xl md:text-2xl font-medium mb-8 leading-relaxed">
                     "{testimonials[currentSlide].text}"
                   </blockquote>
-                  
+
                   <div>
                     <div className="font-semibold text-lg mb-1">
                       {testimonials[currentSlide].name}
@@ -350,19 +354,18 @@ export default function GalleryPage() {
               >
                 <ChevronLeft className="w-6 h-6" />
               </motion.button>
-              
+
               <div className="flex space-x-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentSlide ? 'bg-white' : 'bg-white/30'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-colors ${index === currentSlide ? 'bg-white' : 'bg-white/30'
+                      }`}
                   />
                 ))}
               </div>
-              
+
               <motion.button
                 onClick={nextSlide}
                 whileHover={{ scale: 1.1 }}
@@ -444,7 +447,7 @@ export default function GalleryPage() {
               {(() => {
                 const project = projects.find(p => p.id === selectedImage)
                 if (!project) return null
-                
+
                 return (
                   <div className="p-8">
                     <div className="flex justify-between items-start mb-6">
@@ -456,18 +459,34 @@ export default function GalleryPage() {
                         <X className="w-6 h-6" />
                       </button>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-8 mb-8">
                       <div>
                         <h3 className="text-lg font-semibold mb-3 text-red-600">Before</h3>
-                        <img src={project.beforeImage} alt="Before" className="w-full rounded-2xl" />
+                        <div className="relative w-full h-64 rounded-2xl overflow-hidden">
+                          <Image
+                            src={project.beforeImage}
+                            alt="Before"
+                            fill
+                            className="object-cover rounded-2xl"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold mb-3 text-green-600">After</h3>
-                        <img src={project.afterImage} alt="After" className="w-full rounded-2xl" />
+                        <div className="relative w-full h-64 rounded-2xl overflow-hidden">
+                          <Image
+                            src={project.afterImage}
+                            alt="After"
+                            fill
+                            className="object-cover rounded-2xl"
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                          />
+                        </div>
                       </div>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
                         <h3 className="text-xl font-semibold mb-4">Project Details</h3>
@@ -487,7 +506,7 @@ export default function GalleryPage() {
                         </div>
                         <p className="text-gray-600 mt-4">{project.description}</p>
                       </div>
-                      
+
                       <div>
                         <h3 className="text-xl font-semibold mb-4">Customer Feedback</h3>
                         <div className="bg-gray-50 p-6 rounded-2xl">

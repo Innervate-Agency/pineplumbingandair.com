@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { 
+import {
   Heart, Award, Users, Shield,
   Phone, Calendar, Home, Star
 } from 'lucide-react'
@@ -44,28 +44,29 @@ export default function AboutPage() {
     }
   ]
 
-  const timeline = [
-    {
-      year: "1985",
-      title: "The Beginning",
-      description: "Started Pine Plumbing with just a pickup truck and a promise to always do right by our neighbors."
-    },
-    {
-      year: "2003",
-      title: "Expanding Services",
-      description: "Expanding into HVAC services and building lasting relationships throughout the community."
-    },
-    {
-      year: "2018",
-      title: "Innovation Meets Tradition", 
-      description: "Tom brought modern technology and the Pine Comfort Club while maintaining our family values."
-    },
-    {
-      year: "2024",
-      title: "Growing Strong",
-      description: "Serving thousands of families with the same commitment to quality and care."
-    }
-  ]
+  // Timeline data archived for future reimplementation
+  // const timeline = [
+  //   {
+  //     year: "1985",
+  //     title: "The Beginning",
+  //     description: "Started Pine Plumbing with just a pickup truck and a promise to always do right by our neighbors."
+  //   },
+  //   {
+  //     year: "2003",
+  //     title: "Expanding Services",
+  //     description: "Expanding into HVAC services and building lasting relationships throughout the community."
+  //   },
+  //   {
+  //     year: "2018",
+  //     title: "Innovation Meets Tradition", 
+  //     description: "Tom brought modern technology and the Pine Comfort Club while maintaining our family values."
+  //   },
+  //   {
+  //     year: "2024",
+  //     title: "Growing Strong",
+  //     description: "Serving thousands of families with the same commitment to quality and care."
+  //   }
+  // ]
 
   const certifications = [
     "HVAC: Lic. #9671762",
@@ -80,11 +81,11 @@ export default function AboutPage() {
     <div ref={containerRef} className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-32 bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 text-white overflow-hidden">
-        <motion.div 
+        <motion.div
           style={{ y: heroY }}
           className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"
         />
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -96,16 +97,16 @@ export default function AboutPage() {
               <Home className="w-5 h-5 mr-2" />
               Serving the Community is our Priority
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Meet the
               <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
                 Bullock Family
               </span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto mb-12 leading-relaxed">
-              Boise born and raised, the Bullocks have been more than just your HVAC and plumbing contractors. 
+              Boise born and raised, the Bullocks have been more than just your HVAC and plumbing contractors.
               We&apos;re your neighbors, your friends, and the family you call when comfort matters most.
             </p>
           </motion.div>
@@ -134,7 +135,7 @@ export default function AboutPage() {
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Being locally owned and family operated, we know how important trust, craftsmanship, and community are. When you choose Pine, you're not just hiring a contractor—you're supporting a local family who truly cares.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -173,7 +174,7 @@ export default function AboutPage() {
                       Family Values Drive Everything
                     </h3>
                     <p className="text-gray-600 mb-6">
-                      "We don't just fix heating and cooling systems. We take care of the families 
+                      "We don't just fix heating and cooling systems. We take care of the families
                       who trust us with their most important possession - their home."
                     </p>
                     <p className="font-semibold text-gray-900">
@@ -348,7 +349,7 @@ export default function AboutPage() {
                 Award-Winning Service
               </h3>
               <p className="text-white/90 text-lg">
-                Recognized by our community for outstanding service, customer satisfaction, 
+                Recognized by our community for outstanding service, customer satisfaction,
                 and commitment to excellence in home comfort solutions.
               </p>
             </div>
