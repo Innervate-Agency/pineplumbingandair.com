@@ -1,8 +1,3 @@
-// src/app/api/contact/route.ts
-// Contact form handler for Pine Plumbing and Air
-// Requires the following .env variables:
-// SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_SECURE (true/false), EMAIL_TO
-
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
@@ -11,96 +6,63 @@ export async function POST(req: NextRequest) {
 
   try {
     const { name, email, phone, service, urgency, message, preferredContact } = await req.json();
-    console.log('📝 Form data received:', { name, email, phone, service, urgency, preferredContact });
 
     // Validate required fields
-    if (!name || !email || !phone || !message) {
+    if (!name || !phone || !message) {
       console.log('❌ Missing required fields');
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
-    console.log('⚙️ SMTP Config:', {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE,
-      user: process.env.SMTP_USER,
-      to: process.env.EMAIL_TO
-    });
-
-    // Create transporter with shorter timeouts for Stalwart Mail
-    console.log('🔧 Creating transporter...');
+    // This transporter configuration is robust for an internal Docker network.
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
+      // 'secure' should be false for internal, non-TLS communication.
       secure: process.env.SMTP_SECURE === 'true',
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-      authMethod: 'LOGIN',
+      // Keep TLS relaxation if needed for Docker networking.
       tls: {
         rejectUnauthorized: false,
-        ciphers: 'SSLv3'
       },
-      // Reduced timeouts for Stalwart Mail
-      connectionTimeout: 10000, // 10 seconds instead of 60
-      greetingTimeout: 5000,    // 5 seconds instead of 30
-      socketTimeout: 10000,     // 10 seconds instead of 60
+      // Generous timeouts for the connection to Stalwart.
+      connectionTimeout: 10000, // 10 seconds
+      socketTimeout: 10000,     // 10 seconds
     });
 
-    // Skip connection verification - it's causing timeouts
-    console.log('⏭️ Skipping connection verification to avoid timeout...');
-
-    // Compose email
-    console.log('📧 Composing email...');
     const mailOptions = {
       from: `Pine Plumbing and Air <${process.env.SMTP_USER}>`,
-      to: process.env.EMAIL_TO || 'contact@pineplumbingandair.com',
-      subject: `New Contact Form Submission from ${name}`,
+      to: process.env.EMAIL_TO,
       replyTo: email,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nUrgency: ${urgency}\nPreferred Contact: ${preferredContact}\n\nMessage:\n${message}`,
+      subject: `New Website Contact: ${name} - ${service || 'General Inquiry'}`,
       html: `<p><strong>Name:</strong> ${name}</p>
-             <p><strong>Email:</strong> ${email}</p>
+             <p><strong>Email:</strong> ${email || 'Not provided'}</p>
              <p><strong>Phone:</strong> ${phone}</p>
-             <p><strong>Service:</strong> ${service}</p>
-             <p><strong>Urgency:</strong> ${urgency}</p>
-             <p><strong>Preferred Contact:</strong> ${preferredContact}</p>
-             <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>`
+             <p><strong>Service:</strong> ${service || 'N/A'}</p>
+             <p><strong>Urgency:</strong> ${urgency || 'N/A'}</p>
+             <p><strong>Preferred Contact:</strong> ${preferredContact || 'N/A'}</p>
+             <hr>
+             <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>`,
     };
 
-    // Send email with timeout handling
-    console.log('📤 Sending email...');
-    try {
-      const result = await Promise.race([
-        transporter.sendMail(mailOptions),
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Email send timeout')), 15000)
-        )
-      ]);
-      console.log('✅ Email sent successfully:', (result as { messageId?: string })?.messageId);
-      return NextResponse.json({ success: true });
-    } catch (sendError) {
-      console.log('❌ Email send failed:', sendError);
-      // If it's just a timeout, the email might still be delivered by Stalwart
-      if (sendError instanceof Error && sendError.message === 'Email send timeout') {
-        console.log('⚠️ Timeout occurred, but email might still be delivered via Stalwart Mail');
-        return NextResponse.json({
-          success: true,
-          warning: 'Email queued for delivery (timeout occurred)'
-        });
-      }
-      // For other errors, return actual failure
-      throw sendError;
-    }
+    console.log('📤 Handing off email to mail server...');
+    // This promise resolves once Stalwart ACCEPTS the email, not when it's delivered. This is the key.
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('✅ Email accepted by mail server for delivery:', info.messageId);
+    return NextResponse.json({ success: true, messageId: info.messageId });
 
   } catch (error) {
-    console.error('❌ Contact form error:', error);
-    console.error('Error details:', {
+    console.error('❌ Contact form API error:', error);
+    const errorDetails = {
       message: error instanceof Error ? error.message : 'Unknown error',
-      code: (error as Error & { code?: string }).code,
-      command: (error as Error & { command?: string }).command,
-      stack: error instanceof Error ? error.stack : undefined
-    });
-    return NextResponse.json({ error: 'Failed to send message.' }, { status: 500 });
+      code: (error as any).code,
+      command: (error as any).command,
+    };
+    console.error('Error details:', errorDetails);
+
+    return NextResponse.json({ error: 'Failed to send message.', details: errorDetails.message }, { status: 500 });
   }
-} 
+}
