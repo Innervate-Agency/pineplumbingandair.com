@@ -15,7 +15,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
-  const { theme, toggleTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
+  
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
   const servicesRef = useRef<HTMLDivElement>(null)
   const loginRef = useRef<HTMLDivElement>(null)
 
