@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 import {
   Heart, Award, Users, Shield,
   Phone, Calendar, Home, Star
@@ -165,8 +166,8 @@ export default function AboutPage() {
               className="relative"
             >
               <div className="bg-gradient-to-br from-primary-50 to-sage-50 rounded-3xl p-8 shadow-2xl">
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <div className="text-center">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
+                  <div className="text-center p-8">
                     <div className="w-24 h-24 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center mx-auto mb-6">
                       <Heart className="w-12 h-12 text-white" />
                     </div>
@@ -177,9 +178,39 @@ export default function AboutPage() {
                       "We don't just fix heating and cooling systems. We take care of the families
                       who trust us with their most important possession - their home."
                     </p>
-                    <p className="font-semibold text-gray-900">
+                    <p className="font-semibold text-gray-900 mb-8">
                       — Tom Bullock, Owner
                     </p>
+                  </div>
+                  
+                  {/* Family Photos */}
+                  <div className="relative h-80 overflow-hidden">
+                    <div className="grid grid-cols-2 h-full">
+                      {/* Tom in suit */}
+                      <div className="relative overflow-hidden">
+                        <Image
+                          src="/images/wholesome-photos/1000032468.jpg"
+                          alt="Tom Bullock, Owner of Pine Plumbing & Air"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 50vw, 25vw"
+                        />
+                      </div>
+                      
+                      {/* Jessica in wedding dress */}
+                      <div className="relative overflow-hidden">
+                        <Image
+                          src="/images/wholesome-photos/1000032462.jpg"
+                          alt="Jessica Bullock, Pine Plumbing & Air Family"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 50vw, 25vw"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* White gradient overlay from bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-slate-800 dark:via-slate-800/80 pointer-events-none"></div>
                   </div>
                 </div>
               </div>
@@ -272,31 +303,102 @@ export default function AboutPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => {
-              const IconComponent = value.icon
-              return (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -10 }}
-                  className="text-center group"
-                >
-                  <div className={`w-20 h-20 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <IconComponent className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {value.description}
-                  </p>
-                </motion.div>
-              )
-            })}
+          <div className="space-y-24">
+            {/* First row - Photo left, Values right */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Photo */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="relative h-96 rounded-2xl overflow-hidden shadow-2xl"
+              >
+                <Image
+                  src="/images/wholesome-photos/1000032468.jpg"
+                  alt="Tom Bullock working on HVAC system"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </motion.div>
+
+              {/* Values Grid - Top 2 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {values.slice(0, 2).map((value, index) => {
+                  const IconComponent = value.icon
+                  return (
+                    <motion.div
+                      key={value.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ y: -10 }}
+                      className="text-center group"
+                    >
+                      <div className={`w-20 h-20 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                        <IconComponent className="w-10 h-10 text-white" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-600">
+                        {value.description}
+                      </p>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Second row - Values left, Photo right */}
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Values Grid - Bottom 2 */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:order-1">
+                {values.slice(2, 4).map((value, index) => {
+                  const IconComponent = value.icon
+                  return (
+                    <motion.div
+                      key={value.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      whileHover={{ y: -10 }}
+                      className="text-center group"
+                    >
+                      <div className={`w-20 h-20 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                        <IconComponent className="w-10 h-10 text-white" />
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-600">
+                        {value.description}
+                      </p>
+                    </motion.div>
+                  )
+                })}
+              </div>
+
+              {/* Photo */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="relative h-96 rounded-2xl overflow-hidden shadow-2xl lg:order-2"
+              >
+                <Image
+                  src="/images/wholesome-photos/1000032462.jpg"
+                  alt="Jessica Bullock, Pine Plumbing & Air Family"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

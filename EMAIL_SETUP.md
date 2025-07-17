@@ -48,4 +48,32 @@ Once set up, all contact forms on the site will work:
 
 ## Alternative: Use your Stalwart Mail server
 
-If you prefer to use your existing mail server, you can modify the contact route to use SMTP instead of Resend. Let me know if you'd like me to set that up instead. 
+If you prefer to use your existing Stalwart Mail server, here's how to set it up:
+
+### Option 1: Keep Resend as fallback with SMTP primary
+1. Install nodemailer: `npm install nodemailer @types/nodemailer`
+2. Add these environment variables to `.env.local`:
+   ```
+   RESEND_API_KEY=re_your_api_key_here
+   SMTP_HOST=your.stalwart.server.com
+   SMTP_PORT=587
+   SMTP_SECURE=false
+   SMTP_USER=contact@pineplumbingandair.com
+   SMTP_PASS=your_smtp_password
+   EMAIL_TO=contact@pineplumbingandair.com
+   ```
+
+### Option 2: SMTP Only
+If you want to use only SMTP (no Resend fallback):
+1. Install nodemailer: `npm install nodemailer @types/nodemailer`
+2. Add environment variables to `.env.local`:
+   ```
+   SMTP_HOST=your.stalwart.server.com
+   SMTP_PORT=587
+   SMTP_SECURE=false
+   SMTP_USER=contact@pineplumbingandair.com
+   SMTP_PASS=your_smtp_password
+   EMAIL_TO=contact@pineplumbingandair.com
+   ```
+
+Let me know which option you prefer and I'll update the contact route accordingly! 
