@@ -9,13 +9,23 @@ import {
   Settings, Sun, Moon
 } from 'lucide-react'
 import { SITE_CONFIG, SERVICES } from '@/lib/constants'
-import { useTheme } from '@/lib/theme'
+import { useTheme } from 'next-themes'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isLoginOpen, setIsLoginOpen] = useState(false)
-  const { theme, toggleTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light')
+  }
   const servicesRef = useRef<HTMLDivElement>(null)
   const loginRef = useRef<HTMLDivElement>(null)
 
@@ -193,17 +203,19 @@ export default function Header() {
           {/* Right Side Actions */}
           <div className="hidden lg:flex items-center space-x-3">
             {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-white/60 transition-all duration-300"
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            >
-              {theme === 'light' ? (
-                <Moon className="h-5 w-5 text-gray-700" />
-              ) : (
-                <Sun className="h-5 w-5 text-gray-700" />
-              )}
-            </button>
+            {mounted && (
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg hover:bg-white/60 transition-all duration-300"
+                aria-label={`Switch to ${resolvedTheme === 'light' ? 'dark' : 'light'} mode`}
+              >
+                {resolvedTheme === 'light' ? (
+                  <Moon className="h-5 w-5 text-gray-700" />
+                ) : (
+                  <Sun className="h-5 w-5 text-gray-700" />
+                )}
+              </button>
+            )}
             
             {/* Pine Comfort Club Login */}
             <div className="relative" ref={loginRef}>
