@@ -7,15 +7,28 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: NextRequest) {
+  console.log('🚀 Contact form API called');
+
   try {
     const { name, email, phone, service, urgency, message, preferredContact } = await req.json();
+    console.log('📝 Form data received:', { name, email, phone, service, urgency, preferredContact });
 
     // Validate required fields
     if (!name || !email || !phone || !message) {
+      console.log('❌ Missing required fields');
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
+    console.log('⚙️ SMTP Config:', {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: process.env.SMTP_SECURE,
+      user: process.env.SMTP_USER,
+      to: process.env.EMAIL_TO
+    });
+
     // Create transporter
+    console.log('🔧 Creating transporter...');
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
@@ -24,9 +37,29 @@ export async function POST(req: NextRequest) {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      authMethod: 'LOGIN',
+      tls: {
+        rejectUnauthorized: false,
+        ciphers: 'SSLv3'
+      },
+      connectionTimeout: 60000,
+      greetingTimeout: 30000,
+      socketTimeout: 60000,
     });
 
+    console.log('✅ Transporter created, testing connection...');
+
+    // Test connection first
+    try {
+      await transporter.verify();
+      console.log('✅ SMTP connection verified successfully');
+    } catch (verifyError) {
+      console.error('❌ SMTP connection verification failed:', verifyError);
+      throw verifyError;
+    }
+
     // Compose email
+    console.log('📧 Composing email...');
     const mailOptions = {
       from: `Pine Plumbing and Air <${process.env.SMTP_USER}>`,
       to: process.env.EMAIL_TO || 'contact@pineplumbingandair.com',
@@ -43,11 +76,19 @@ export async function POST(req: NextRequest) {
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    console.log('📤 Sending email...');
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Email sent successfully:', result.messageId);
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('❌ Contact form error:', error);
+    console.error('Error details:', {
+      message: (error as any).message,
+      code: (error as any).code,
+      command: (error as any).command,
+      stack: (error as any).stack
+    });
     return NextResponse.json({ error: 'Failed to send message.' }, { status: 500 });
   }
 } 

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { 
+import {
   Phone, Mail, MapPin, Clock, Send,
   CheckCircle, Zap
 } from 'lucide-react'
@@ -23,7 +23,7 @@ export default function ContactPage() {
 
   const serviceOptions = [
     'Heating Repair',
-    'Air Conditioning Repair', 
+    'Air Conditioning Repair',
     'Plumbing Service',
     'Emergency Repair',
     'New Installation',
@@ -42,27 +42,40 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    // In real implementation, this would send to your backend
-    setSubmitStatus('success')
-    setIsSubmitting(false)
-    
-    // Reset form after success
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        urgency: 'routine',
-        message: '',
-        preferredContact: 'phone'
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-      setSubmitStatus('idle')
-    }, 3000)
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          urgency: 'routine',
+          message: '',
+          preferredContact: 'phone'
+        })
+        setTimeout(() => setSubmitStatus('idle'), 3000)
+      } else {
+        console.error('Form submission failed')
+        setSubmitStatus('error')
+        setTimeout(() => setSubmitStatus('idle'), 3000)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+      setTimeout(() => setSubmitStatus('idle'), 3000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -123,7 +136,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-slate-900 via-primary-900 to-earth-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%223%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -135,16 +148,16 @@ export default function ContactPage() {
               <Clock className="w-5 h-5 mr-2" />
               Available 24/7 for Emergencies
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
               Get in
               <span className="block bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
                 Touch
               </span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto mb-12 leading-relaxed">
-              Ready to experience the Pine difference? We're here when you need us most, 
+              Ready to experience the Pine difference? We're here when you need us most,
               with fast response times and honest, upfront pricing.
             </p>
           </motion.div>
@@ -173,7 +186,7 @@ export default function ContactPage() {
                       <Zap className="w-5 h-5 text-yellow-300 animate-pulse" />
                     </div>
                   )}
-                  
+
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="w-6 h-6" />
@@ -183,9 +196,9 @@ export default function ContactPage() {
                       <p className="text-white/80 text-sm">{method.description}</p>
                     </div>
                   </div>
-                  
+
                   <p className="text-lg font-medium">{method.contact}</p>
-                  
+
                   <div className="absolute bottom-0 right-0 w-20 h-20 bg-white/10 rounded-full -mr-10 -mb-10 group-hover:scale-150 transition-transform duration-500"></div>
                 </motion.a>
               )

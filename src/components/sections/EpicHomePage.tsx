@@ -71,7 +71,7 @@ export default function EpicHomePage() {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle')
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const serviceOptions = [
     'Heating', 'Cooling', 'Plumbing', 'Emergency', 'New Installation', 'Maintenance', 'Comfort Club', 'Other'
@@ -92,14 +92,34 @@ export default function EpicHomePage() {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setSubmitStatus('success')
-      setTimeout(() => setSubmitStatus('idle'), 3000)
-      setFormData({
-        name: '', phone: '', email: '', service: 'Heating', urgency: 'routine', preferredContact: 'phone', message: ''
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-    }, 1800)
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '', phone: '', email: '', service: 'Heating', urgency: 'routine', preferredContact: 'phone', message: ''
+        })
+        setTimeout(() => setSubmitStatus('idle'), 3000)
+      } else {
+        console.error('Form submission failed')
+        setSubmitStatus('error')
+        setTimeout(() => setSubmitStatus('idle'), 3000)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+      setTimeout(() => setSubmitStatus('idle'), 3000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleLearnMore = (serviceName: string) => {
