@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - coolify
+    environment:
+      - SMTP_HOST=smtp-relay-bridge
+      - SMTP_PORT=25
+      - SMTP_SECURE=false
+      - EMAIL_TO=contact@pineplumbingandair.com
+
+networks:
+  coolify:
+    external: true 
