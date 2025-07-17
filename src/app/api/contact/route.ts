@@ -76,8 +76,8 @@ export async function POST(req: NextRequest) {
         new Promise((_, reject) =>
           setTimeout(() => reject(new Error('Email send timeout')), 15000)
         )
-      ]) as any;
-      console.log('✅ Email sent successfully:', result?.messageId);
+      ]);
+      console.log('✅ Email sent successfully:', (result as { messageId?: string })?.messageId);
       return NextResponse.json({ success: true });
     } catch (sendError) {
       console.log('⚠️ Email send error, but might still be delivered:', sendError);
