@@ -80,9 +80,17 @@ export async function POST(req: NextRequest) {
       console.log('✅ Email sent successfully:', (result as { messageId?: string })?.messageId);
       return NextResponse.json({ success: true });
     } catch (sendError) {
-      console.log('⚠️ Email send error, but might still be delivered:', sendError);
-      // Return success anyway since Stalwart Mail routing is working
-      return NextResponse.json({ success: true });
+      console.log('❌ Email send failed:', sendError);
+      // If it's just a timeout, the email might still be delivered by Stalwart
+      if (sendError instanceof Error && sendError.message === 'Email send timeout') {
+        console.log('⚠️ Timeout occurred, but email might still be delivered via Stalwart Mail');
+        return NextResponse.json({
+          success: true,
+          warning: 'Email queued for delivery (timeout occurred)'
+        });
+      }
+      // For other errors, return actual failure
+      throw sendError;
     }
 
   } catch (error) {
